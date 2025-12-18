@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --font-secondary: "Inter", sans-serif;
+  --font-primary: "DM Sans", sans-serif;
+    --w-8xl: 1440px;
+   --color-dark: rgba(45, 45, 45, 1);
+   --secondary-text:rgba(179, 179, 179, 1);
+}
+
+
+
+
+
+
+.font-primary {
+  font-family: var(--font-primary);
+  font-optical-sizing: auto;
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+  font-optical-sizing: auto;
+}
+
+
+.custom-tracking {
+  letter-spacing: 0.02em; /* 2% */
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+.section-wrapper{
+  padding: 96px 40px;
+}
+
+
+.dm-heading-md {
+  font-family:var(--font-primary);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+/* .circle {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+} */
+
+
+
+.dm-heading-lg {
+  font-family:var(--font-primary);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+
+
+
