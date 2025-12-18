@@ -12,7 +12,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
   number,
   title,
   description,
-  imageHeight = 300,
+
 }) => {
   return (
     <div className="w-full process-card  flex justify-between gap-8">

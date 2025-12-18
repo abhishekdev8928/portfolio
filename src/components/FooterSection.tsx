@@ -1,5 +1,5 @@
-import { ArrowUp, MoveUp } from "lucide-react";
-import React from "react";
+import { MoveUp } from "lucide-react";
+
 
 const FooterSection = () => {
   return (

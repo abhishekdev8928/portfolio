@@ -1,4 +1,4 @@
-import React from "react";
+
 import { SKILL_SECTION_CARDS } from "../utils/constant";
 import SkillCard from "./cards/SkillCard";
 

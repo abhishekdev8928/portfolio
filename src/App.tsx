@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import SkillSection from "./components/SkillSection";
 import Avatar from "./components/ui/Avatar";

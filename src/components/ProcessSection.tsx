@@ -17,7 +17,7 @@ const ProcessSection: React.FC = () => {
 
     const ctx = gsap.context(() => {
       // Animate each card individually with its own trigger
-      cards.forEach((card, index) => {
+      cards.forEach((card) => {
         const img = card.querySelector(".process-card-img") as HTMLElement;
         const finalHeight = img?.getAttribute("data-final-height") || "300";
 

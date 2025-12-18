@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 
 interface SkillCardProps {
@@ -8,7 +8,7 @@ interface SkillCardProps {
     alt:string
 }
 
-const SkillCard = ({title,imageSrc , alt}:SkillCardProps) => {
+const SkillCard = ({title , alt}:SkillCardProps) => {
   return (
 
       <div className="skill-card relative p-6 overflow-hidden w-[300px] border border-[rgba(143, 143, 143, 1)] h-[364px] rounded-sm">
