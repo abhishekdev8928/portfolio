@@ -15,29 +15,25 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 
 }) => {
   return (
-    <div className="w-full process-card  flex justify-between gap-8">
-      {/* Number */}
-      <h4 className="font-primary text-[#8F8F8F] font-light text-[72px] leading-none">
-        {number}
-      </h4>
+      <div className="card flex justify-between items-start  overflow-hidden">
+          <h2 className="font-primary text-[72px] text-[#8F8F8F]">{number}</h2>
 
-      {/* Content */}
-      <div className="w-[800px] shrink-0 space-y-6">
-        <div className="space-y-4">
-          <h5 className="font-primary leading-none text-[36px]">{title}</h5>
-          <p className="font-secondary text-[#686868] leading-[1.2] text-[16px]">
-            {description}
-          </p>
+          <div className="w-1/2 flex flex-col justify-between shrink-0 space-y-6">
+            <div className="max-w-lg space-y-4">
+              <h3 className="font-primary text-[36px] leading-none">
+                {title}
+              </h3>
+              <p className="font-secondary text-[#686868] leading-[1.2]">
+               {description}
+              </p>
+            </div>
+
+            <div className="img-div w-full  overflow-hidden h-[300px] bg-stone-200">
+              
+            </div>
+
+          </div>
         </div>
-
-
-        <div
-          className="w-full process-card-img h-0 bg-stone-200 rounded-[8px]"
-          
-          
-        />
-      </div>
-    </div>
   );
 };
 

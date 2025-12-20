@@ -73,7 +73,13 @@ export const PROCESS_STEPS = [
   },
   {
     number: "04",
-    title: "Design & Prototype",
+    title: "Hi-fi Design",
+    description:
+      "Before designing, I gather context, identify challenges, and clarify what the product needs to solve.",
+  },
+  {
+    number: "05",
+    title: "Handoff",
     description:
       "Before designing, I gather context, identify challenges, and clarify what the product needs to solve.",
   },

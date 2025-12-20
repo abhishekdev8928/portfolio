@@ -1,5 +1,5 @@
 // ProcessSection.tsx
-import React, { useRef, useEffect } from "react";
+import React, {  useEffect } from "react";
 import ProcessCard from "./cards/ProcessCard";
 import { PROCESS_STEPS } from "../../src/utils/constant";
 import gsap from "gsap";
@@ -8,81 +8,47 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProcessSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+useEffect(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".trigger-point",
+      start: "top top",
+      end: "bottom bottom", // increase scroll range to fit stagger animations
+      scrub: 1.5,
+    },
+  });
 
-  useEffect(() => {
-    const cards = gsap.utils.toArray<HTMLElement>(".process-card");
-    
-    if (cards.length === 0) return;
+  // Step 1: Animate image divs sequentially
+  tl.to(".img-div", {
+    height: 0,
+    stagger: 0.4,       // each element animates one by one
+    ease:"linear"
+  },"a");
 
-    const ctx = gsap.context(() => {
-      // Animate each card individually with its own trigger
-      cards.forEach((card) => {
-        const img = card.querySelector(".process-card-img") as HTMLElement;
-        const finalHeight = img?.getAttribute("data-final-height") || "300";
-
-        if (!img) return;
-
-        // Image height animation
-        gsap.fromTo(
-          img,
-          { 
-            height: 300,
-            opacity: 0 
-          },
-          {
-            height: `${finalHeight}px`,
-            opacity: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 80%",
-              end: "top 30%",
-              scrub: 1,
-              // markers: true, 
-            },
-          }
-        );
+  // Step 2: Animate card borders after img-div animations
+  tl.to(".card", {
+    borderBottomColor: "#e5e5e5",
+    stagger: 0.2,
+    ease:"linear"
+  }, "a"); // start after previous animation
+}, []);
 
 
-        gsap.fromTo(
-          card,
-          { 
-            opacity: 0,
-            y: 100 
-          },
-          {
-            opacity: 1,
-            y: 0,
-            
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              end: "top 50%",
-              scrub: 1,
-              
-            },
-          }
-        );
-      });
-    }, sectionRef);
 
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+
+
+
 
   return (
-    <section ref={sectionRef} className="process-container overflow-hidden py-24">
-      <div className="max-w-(--w-8xl) mx-auto px-10">
-        <h3 className="font-primary font-normal text-[48px] leading-none">
-          Here's how I shape every project.
-        </h3>
+    <section className="process-container ]py-24">
+      <div className=" py-[96px] px-[40px]">
 
-        <div className="mt-[46px]">
-          <div className="process-list space-y-20">
+      <h2 className="font-primary text-[48px] leading-none">
+        Here’s how I shape every project.
+      </h2>
+
+        <div className="h-[800vh] trigger-point  relative">
+          <div className="sticky  top-0 left-0 w-full  space-y-[40px] mt-[64px]">
             {PROCESS_STEPS.map((step) => (
               <ProcessCard
                 key={step.number}

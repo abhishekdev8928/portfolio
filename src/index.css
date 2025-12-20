@@ -69,3 +69,16 @@
 
 
 
+ .container-card {
+        position: sticky;
+        top:0;
+        left:0;
+      }
+
+      .card {
+  border-bottom: 1px solid transparent;
+
+}
+
+
+
