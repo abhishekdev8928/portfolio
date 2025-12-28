@@ -21,38 +21,44 @@ export default function WorkSection() {
         className="w-full"
       >
         <SwiperSlide style={{ width: "420px" }}>
+            <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+          
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "420px" }}>
+          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+            
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "420px" }}>
+          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+           
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "420px" }}>
+          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+            
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "420px" }}>
+          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+           
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "420px" }}>
+          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
           <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            <h2 className="font-primary font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
+           
           </div>
         </SwiperSlide>
       </Swiper>

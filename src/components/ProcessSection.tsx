@@ -13,24 +13,24 @@ useEffect(() => {
     scrollTrigger: {
       trigger: ".trigger-point",
       start: "top top",
-      end: "bottom bottom", // increase scroll range to fit stagger animations
-      scrub: 1.5,
+      end: "bottom bottom", 
+      scrub: 1.5
     },
   });
 
-  // Step 1: Animate image divs sequentially
+ 
   tl.to(".img-div", {
     height: 0,
-    stagger: 0.4,       // each element animates one by one
+    stagger: 0.4,       
     ease:"linear"
   },"a");
 
-  // Step 2: Animate card borders after img-div animations
+  
   tl.to(".card", {
     borderBottomColor: "#e5e5e5",
     stagger: 0.2,
     ease:"linear"
-  }, "a"); // start after previous animation
+  }, "a"); 
 }, []);
 
 
@@ -47,8 +47,8 @@ useEffect(() => {
         Here’s how I shape every project.
       </h2>
 
-        <div className="h-[800vh] trigger-point  relative">
-          <div className="sticky  top-0 left-0 w-full  space-y-[40px] mt-[64px]">
+        <div className="h-[800vh]  trigger-point  relative">
+          <div className="sticky pt-[60px] top-0 left-0 w-full  space-y-[40px] ">
             {PROCESS_STEPS.map((step) => (
               <ProcessCard
                 key={step.number}

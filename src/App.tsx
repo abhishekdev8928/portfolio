@@ -1,4 +1,3 @@
-
 import Navbar from "./components/Navbar";
 import SkillSection from "./components/SkillSection";
 import Avatar from "./components/ui/Avatar";
@@ -9,28 +8,30 @@ import ConnectSection from "./components/ConnectSection";
 import FooterSection from "./components/FooterSection";
 import { Mail } from "lucide-react";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import IntroSection from "./components/IntroSection";
 import ProjectSection from "./components/ProjectCarousel";
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const App = () => {
   useGSAP(() => {
-    const t1 = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".header-wrapper",
-        start: "80% 60%",
-        end: "bottom 20%",
-        // markers: true,
-        scrub: 3,
+        start: "30% bottom",
+        end: "60% bottom",
+        // markers:true,
+        scrub: 1.2,
       },
     });
 
-    t1.to(".showecase-img", {
-      bottom: 40,
+    tl.to(".showecase-img", {
+      bottom: 30,
+      duration: 1,
+      width:"100%",
       ease: "linear",
-      opacity: 1,
-      scale: 1,
     });
   }, []);
 
@@ -39,8 +40,8 @@ const App = () => {
       <Navbar />
 
       {/* hero section */}
-      <section className="relative">
-        <div className="header-wrapper  bg-stone-200   w-full h-[900px] ">
+      <section className="relative  ">
+        <div className="   w-full pb-[100px] ">
           <div className="h-full pt-[200px] ">
             <div className="hero-content mx-auto mb-8  flex flex-col items-center w-full max-w-6xl">
               <div>Pratham Mhavale · UX Designer · Visual Designer</div>
@@ -63,39 +64,58 @@ const App = () => {
               </div>
             </div>
 
-            <div className="showecase-img scale-[0.6] opacity-0 absolute  flex left-1/2 -translate-x-1/2  mx-auto   border-[13.69px] border-white rounded-[21.91px] overflow-hidden   max-w-[900px]">
-              <img src="/project.png" alt="" />
+            <div
+              className="
+    showecase-img
+    z-10
+    
+    
+  left-1/2
+  -translate-x-1/2
+   
+
+    absolute
+  
+    w-[50%]
+
+   flex justify-center
+
+   
+    
+  "
+            >
+              <img src="/project.png" alt="" className="w-full w-[800px] " />
             </div>
           </div>
         </div>
-        <div className="project-section flex flex-col gap-12 pt-24 pb-12 px-10 max-w-(-w-8xl) w-full ">
-          <div className="project-layout-one w-full">
-            <div className="w-full  flex justify-between items-center">
-              <h3 className="font-primary font-medium text-[40px] leading-none tracking-normal">
-                GroceryGo App
-              </h3>
 
-              <div className="chips flex gap-2">
-                <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                  UX Design
-                </div>
+        <div className=" min-h-[80vh] md:min-h-[1250px]  header-wrapper w-full">
+          <div className="max-w-5xl space-y-4 text-center  mx-auto">
+            <h2 className="dm-heading-md">TravelBuddy Web</h2>
+            <p className="font-secondary text-[#2D2D2D] text-[16px] leading-[1.2] tracking-normal">
+              A responsive website for discovering curated travel itineraries.{" "}
+              <br /> Designed to simplify trip planning with clear visuals and
+              smart filters.
+            </p>
 
-                <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                  UX Design
-                </div>
+            <div className="chips flex justify-center gap-2 ">
+              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
+                UX Design
+              </div>
 
-                <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                  UX Design
-                </div>
+              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
+                UX Design
+              </div>
+
+              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
+                UX Design
               </div>
             </div>
-
-            <div className="w-full mt-2.5 h-[600px] rounded-sm bg-stone-200"></div>
           </div>
         </div>
       </section>
 
-      <section className="project-section flex flex-col pb-12 gap-12 px-10 max-w-(-w-8xl) w-full ">
+      <section className="project-section pt-12 flex flex-col pb-12 gap-12 px-10 max-w-(-w-8xl) w-full ">
         <div className="project-layout-two relative">
           <div className="max-w-5xl space-y-4 text-center  mx-auto">
             <h2 className="dm-heading-md">TravelBuddy Web</h2>
