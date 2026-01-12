@@ -18,7 +18,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
       <div className="card flex     justify-between items-start  overflow-hidden">
           <h2 className="font-primary leading-none text-[72px] text-[#8F8F8F]">{number}</h2>
 
-          <div className="max-w-[944px] w-full flex gap-6  justify-between shrink-0 py-6">
+          <div className="max-w-[944px] w-full flex gap-6  justify-between shrink-0 pb-6">
 
            <div className="img-div rounded-lg max-w-[420px] w-full overflow-hidden h-[300px] bg-stone-200">
 
