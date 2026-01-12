@@ -15,11 +15,17 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 
 }) => {
   return (
-      <div className="card flex justify-between items-start  overflow-hidden">
-          <h2 className="font-primary text-[72px] text-[#8F8F8F]">{number}</h2>
+      <div className="card flex     justify-between items-start  overflow-hidden">
+          <h2 className="font-primary leading-none text-[72px] text-[#8F8F8F]">{number}</h2>
 
-          <div className="w-1/2 flex flex-col justify-between shrink-0 space-y-6">
-            <div className="max-w-lg space-y-4">
+          <div className="max-w-[944px] w-full flex gap-6  justify-between shrink-0 py-6">
+
+           <div className="img-div rounded-lg max-w-[420px] w-full overflow-hidden h-[300px] bg-stone-200">
+
+            <img src="/image.png" className="w-full " alt="" />
+              
+            </div>
+            <div className="flex-1 space-y-4">
               <h3 className="font-primary text-[36px] leading-none">
                 {title}
               </h3>
@@ -28,9 +34,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
               </p>
             </div>
 
-            <div className="img-div w-full  overflow-hidden h-[300px] bg-stone-200">
-              
-            </div>
+           
 
           </div>
         </div>

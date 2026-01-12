@@ -79,8 +79,94 @@ export const PROCESS_STEPS = [
   },
   {
     number: "05",
-    title: "Handoff",
+    title: "Feedback & Iteration",
     description:
       "Before designing, I gather context, identify challenges, and clarify what the product needs to solve.",
+  },
+];
+
+
+
+export interface Project {
+  id: number;
+  title: string;
+  image: string;
+}
+
+
+
+export const PROJECTS_CAROUSEL_CONFIG: Project[] = [
+  {
+    id: 1,
+    title: "Project Name",
+    image: "/carousel/carousel-top-one.png",
+  },
+  {
+    id: 2,
+    title: "TravelBuddy Web",
+    image: "/carousel/carousel-top-two.png",
+  },
+  {
+    id: 3,
+    title: "TravelBuddy Web",
+    image: "/carousel/carousel-top-three.png",
+  },
+  {
+    id: 4,
+    title: "TravelBuddy Web",
+    image: "/carousel/carousel-top-four.png",
+  },
+  {
+    id: 5,
+    title: "TravelBuddy Web",
+    image: "/carousel/carousel-top-two.png",
+  },
+  {
+    id: 6,
+    title: "TravelBuddy Web",
+    image: "/carousel/carousel-top-one.png",
+  },
+];
+
+
+
+
+
+export const HERO_SHOWCASE_PROJECTS_CONFIG = [
+  {
+    id: "1",
+    title: "Rivora",
+    subtitle:
+      "A mobile app concept that helps shoppers find products faster in-store.",
+    description:
+      "Focused on improving navigation, search, and checkout flow.",
+
+    tags: [
+      { id: "ux", label: "UX Design" },
+      { id: "mobile", label: "Mobile App" },
+      { id: "navigation", label: "Navigation" },
+    ],
+
+    heroImageSrc: "/project/project-image-01.webp",
+    imageAlt: "The Bridge of Cadio, New Zealand",
+  },
+
+  {
+    id: "2",
+    title: "Canva Cloud",
+    subtitle:
+      "A mobile app concept that helps shoppers find products faster in-store.",
+    description:
+      " Focused on improving navigation, search, and checkout flow.",
+
+    tags: [
+      { id: "ui", label: "UX Design" },
+      { id: "web", label: "Mobile App" },
+      {id:"navigation",label:"Navigation"}
+    ],
+
+    heroImageSrc: "/project/project-image-02.webp",
+    imageAlt: "The Bridge of Cadio, New Zealand",
+
   },
 ];

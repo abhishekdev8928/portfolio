@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.2",
     "gsap": "^3.13.0",
     "lucide-react": "^0.556.0",
+    "portfolio": "link:",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1",
@@ -36,6 +37,6 @@
     "tailwindcss": "^4.1.17",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.6"
+    "vite": "^7.3.1"
   }
 }

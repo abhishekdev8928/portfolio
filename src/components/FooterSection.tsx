@@ -4,21 +4,29 @@ import { MoveUp } from "lucide-react";
 const FooterSection = () => {
   return (
     <section className="relative">
-      <div className="pt-24   h-[364px] mx-auto bg-[#1E1E1E]  max-w-(--w-8xl)">
-        <div className="flex px-10 space-y-2 justify-between items-center ">
-          <h4 className="primary-heading text-white">See you Soon</h4>
+      <div className="pt-[64px] px-10 pb-[24px]  h-[350px] flex flex-col mx-auto bg-[#1E1E1E]  max-w-(--w-8xl)">
+        <div className="flex  space-y-2 justify-between items-start ">
+          <h4 className="font-primary font-light text-[24px] leading-none text-center text-white">pratham mhavale</h4>
 
-          <button className="flex items-center gap-2.5">
-            <span className="font-secondary font-medium text-white text-[20px] leading-none tracking-normal">
-              Back to top
-            </span>
-            <MoveUp size="24" color="#fff" />
-          </button>
+          <div className="social-links p-2 flex gap-2.5 flex-col">
+
+            <a className="font-secondary font-medium text-white text-xl leading-none" href="#!">Linkedin</a>
+
+                       
+
+                                    <a className="font-secondary font-medium text-white text-xl leading-none" href="#!">Instagram</a>
+
+                                                <a className="font-secondary font-medium text-white text-xl leading-none" href="#!">Discord</a>
+                                                            <a className="font-secondary font-medium text-white text-xl leading-none" href="">X</a>
+
+          </div>
         </div>
 
-        <div className="w-full   absolute bottom-0">
-          <img src="/heading.svg" className="mx-auto" alt="" />
+
+        <div className="font-primary font-light  mt-auto text-white text-[14px] leading-[100%] text-center">
+          @copyright2026 prathammhavale
         </div>
+        
       </div>
     </section>
   );

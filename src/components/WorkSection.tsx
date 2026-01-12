@@ -1,67 +1,33 @@
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
 
-// Swiper v12 CSS
 import "swiper/swiper-bundle.css";
+import ProjectsCarousel from "./section/ProjectsCarousel";
+import { PROJECTS_CAROUSEL_CONFIG } from "../utils/constant";
 
 export default function WorkSection() {
   return (
-    <div className="max-w-(--w-8xl) space-y-14 bg-[#161616] mx-auto pt-24 pb-10">
-      <h2 className="font-primary pl-10 capitalize text-white font-normal text-[48px] leading-none tracking-normal">
-        Each work Has Made me Better
-      </h2>
+    <div className="w-full space-y-10  bg-[#161616] text-white py-24  ">
+      <div className="skills-container-top px-10">
+        <h4
+          className="font-primary h-10 border-b border-[#D9D9D9]  font-light text-white text-[24px] leading-[100%] tracking-[0%] capitalize
+"
+        >
+          More Work
+        </h4>
+      </div>
 
-      <Swiper
-        modules={[FreeMode]}
-        freeMode={true}
-        grabCursor={true}
-        slidesPerView="auto"
-        spaceBetween={20}
-        className="w-full"
-      >
-        <SwiperSlide style={{ width: "420px" }}>
-            <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-          
-          </div>
-        </SwiperSlide>
+      <div className="space-y-8">
 
-        <SwiperSlide style={{ width: "420px" }}>
-          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            
-          </div>
-        </SwiperSlide>
 
-        <SwiperSlide style={{ width: "420px" }}>
-          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-           
-          </div>
-        </SwiperSlide>
+        <ProjectsCarousel direction="left" projects={PROJECTS_CAROUSEL_CONFIG} />
 
-        <SwiperSlide style={{ width: "420px" }}>
-          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-            
-          </div>
-        </SwiperSlide>
+        <ProjectsCarousel direction="right" projects={PROJECTS_CAROUSEL_CONFIG}  />
 
-        <SwiperSlide style={{ width: "420px" }}>
-          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-           
-          </div>
-        </SwiperSlide>
 
-        <SwiperSlide style={{ width: "420px" }}>
-          <h2 className="font-primary text-white mb-4 font-normal text-[24px] leading-none tracking-normal">Project Name</h2>
-          <div className="w-[420px] h-[364px] p-6 rounded-lg bg-stone-200">
-           
-          </div>
-        </SwiperSlide>
-      </Swiper>
+
+
+        
+      </div>
     </div>
   );
 }

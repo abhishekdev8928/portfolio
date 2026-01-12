@@ -1,156 +1,130 @@
 import Navbar from "./components/Navbar";
-import SkillSection from "./components/SkillSection";
-import Avatar from "./components/ui/Avatar";
-import { AVATAR_LIST_CONFIG } from "./utils/constant";
+
 import ProcessSection from "./components/ProcessSection";
 import WorkSection from "./components/WorkSection";
 import ConnectSection from "./components/ConnectSection";
 import FooterSection from "./components/FooterSection";
-import { Mail } from "lucide-react";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import IntroSection from "./components/IntroSection";
-import ProjectSection from "./components/ProjectCarousel";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import HeroShowcaseSection from "./components/section/HeroShowcaseSection";
+import Button from "./components/ui/Button";
+
+import ProjectsCarousel from "./components/section/ProjectsCarousel";
+import { PROJECTS_CAROUSEL_CONFIG } from "./utils/constant";
+import SkillsSection from "./components/section/SkillSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const App = () => {
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".header-wrapper",
-        start: "30% bottom",
-        end: "60% bottom",
+        trigger: ".hero-showcase-wrapper ",
+        start: "25% 90%",
+        end: "30% 90%",
         // markers:true,
-        scrub: 1.2,
+        scrub: 3,
       },
     });
 
-    tl.to(".showecase-img", {
-      bottom: 30,
-      duration: 1,
-      width:"100%",
+    tl.to(".move-down", {
+      marginTop: 0,
+      duration: 3,
       ease: "linear",
+      width:"100%"
+    });
+
+    tl.to(".project-content", {
+      opacity: 1,
     });
   }, []);
 
   return (
     <>
-      <Navbar />
 
-      {/* hero section */}
-      <section className="relative  ">
-        <div className="   w-full pb-[100px] ">
-          <div className="h-full pt-[200px] ">
-            <div className="hero-content mx-auto mb-8  flex flex-col items-center w-full max-w-6xl">
-              <div>Pratham Mhavale · UX Designer · Visual Designer</div>
-              <h1 className="tagline leading-none mt-2  text-center font-primary tracking-[-0.02em] text-[64px] font-normal">
-                Creating thoughtful designs that <br /> make digital products
-                work better.
-              </h1>
 
-              <div className="flex gap-2 items-center mt-6">
-                <div className="flex px-4 ">
-                  <Avatar {...AVATAR_LIST_CONFIG} />
-                </div>
 
-                <button className="py-4 px-6 rounded-full bg-[#2D2D2D] flex gap-2.5 items-center">
-                  <span className="font-secondary  text-white font-medium text-[16px] leading-none tracking-normal">
-                    Connect with me
-                  </span>
-                  <Mail size="24" color="#fff" />
-                </button>
-              </div>
-            </div>
+   {/* <div className="w-full h-16 mt-[-100vh] fixed bottom-0 left-0 bg-red-900 "></div> */}
 
-            <div
-              className="
-    showecase-img
-    z-10
-    
-    
-  left-1/2
-  -translate-x-1/2
-   
 
-    absolute
-  
-    w-[50%]
 
-   flex justify-center
+      <div className="max-w-8xl bg-white relative z-[10] mx-auto">
 
-   
-    
-  "
-            >
-              <img src="/project.png" alt="" className="w-full w-[800px] " />
+        <Navbar />
+
+     
+      <section >
+        <div className="hero-wrapper  w-full pt-[100px] pb-6 h-auto relative px-10">
+          <div className="   w-full">
+          <div className="hero-content mx-auto mb-8  flex flex-col items-center w-full max-w-[976px]">
+            <h1 className="tagline leading-none mt-2  text-center font-primary tracking-[-0.02em] text-[81px] font-normal">
+              Creating thoughtful designs that make digital products work
+              better.
+            </h1>
+
+            <div className="flex gap-4 items-center mt-6">
+            <div className="flex gap-2 group">
+  <img
+    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    src="/social-icon/twitter.png"
+    alt="Twitter"
+  />
+
+  <img
+    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    src="/social-icon/instagram.png"
+    alt="Instagram"
+  />
+
+  <img
+    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    src="/social-icon/facebook.png"
+    alt="Facebook"
+  />
+
+  <img
+    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    src="/social-icon/linkedin.png"
+    alt="LinkedIn"
+  />
+</div>
+
+
+              <Button
+                label={"Let’s Connect "}
+                className="bg-[#FF6E00]  py-4 pl-[32px] pr-6"
+              />
             </div>
           </div>
         </div>
-
-        <div className=" min-h-[80vh] md:min-h-[1250px]  header-wrapper w-full">
-          <div className="max-w-5xl space-y-4 text-center  mx-auto">
-            <h2 className="dm-heading-md">TravelBuddy Web</h2>
-            <p className="font-secondary text-[#2D2D2D] text-[16px] leading-[1.2] tracking-normal">
-              A responsive website for discovering curated travel itineraries.{" "}
-              <br /> Designed to simplify trip planning with clear visuals and
-              smart filters.
-            </p>
-
-            <div className="chips flex justify-center gap-2 ">
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
-
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
-
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="project-section pt-12 flex flex-col pb-12 gap-12 px-10 max-w-(-w-8xl) w-full ">
-        <div className="project-layout-two relative">
-          <div className="max-w-5xl space-y-4 text-center  mx-auto">
-            <h2 className="dm-heading-md">TravelBuddy Web</h2>
-            <p className="font-secondary text-[#2D2D2D] text-[16px] leading-[1.2] tracking-normal">
-              A responsive website for discovering curated travel itineraries.{" "}
-              <br /> Designed to simplify trip planning with clear visuals and
-              smart filters.
-            </p>
+<section className="hero-showcase-wrapper ">
+  <HeroShowcaseSection />
+</section>
 
-            <div className="chips flex justify-center gap-2 ">
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
 
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
+     
 
-              <div className="w-fit border border-[#383838] rounded-full  font-secondary py-2 px-4 leading-none tracking-normal font-normal text-xs">
-                UX Design
-              </div>
-            </div>
-          </div>
 
-          <div className="w-full mt-4 hover-div h-[600px] rounded-sm bg-stone-200">
-            <div className="size-[20px] -translate-x-1/2 -translate-y-1/2  fixed z-[99] circle flex justify-center items-center bg-black rounded-full">
-              <span className="font-secondary text-white leading-[1.2] tracking-normal font-medium text-[20px] "></span>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section>
 
-      <ProjectSection />
+    <div className=" pb-40 text-black">
+ <ProjectsCarousel  projects={PROJECTS_CAROUSEL_CONFIG} />
 
-      <SkillSection />
+</div>
+  </section>
+
+   
+      <SkillsSection />
+
+     
+   
       <IntroSection />
 
       <ProcessSection />
@@ -160,8 +134,73 @@ const App = () => {
       <ConnectSection />
 
       <FooterSection />
+      </div>
     </>
   );
 };
 
 export default App;
+
+
+
+
+export const skillsData = [
+  {
+    title: "UI/UX Design",
+    items: [
+      "User-Centered Design",
+      "Problem-Solving <br /> Usability-Focused",
+    ],
+  },
+  {
+    title: "Visual Design",
+    items: [
+      "Typography",
+      "Hierarchy",
+      "Color Theory",
+      "Whitespacing",
+      "Alignment <br /> Responsiveness",
+    ],
+  },
+  {
+    title: "UX Writing",
+    items: [
+      "Clear & Concise Copy",
+      "Form Helper Text",
+      "Action-Oriented CTAs <br /> Error & Empty States <br /> Content Clarity & Tone",
+    ],
+  },
+];
+
+export const designPrinciplesData = [
+  {
+    title: "Information Architecture",
+    items: [
+      "Content Hierarchy",
+      "Sitemap",
+      "Menu & Label Naming",
+      "Page Organization <br /> Grouping",
+    ],
+  },
+  {
+    title: "WCAG",
+    items: [
+      "Color Contrast Compliance",
+      "Readable Text",
+      "Readable Text | Inclusive Content Design",
+      "Accessible CTA & Forms",
+      "Clarity Over Decoration",
+    ],
+  },
+  {
+    title: "Tools",
+    items: [
+      "Figma",
+      "Canva",
+      "ChatGPT",
+      "Gemini",
+      "Framer",
+      "Spline",
+    ],
+  },
+];
