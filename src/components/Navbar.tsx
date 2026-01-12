@@ -1,4 +1,4 @@
-import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
+
 import Button from "./ui/Button";
 
 const Navbar = () => {

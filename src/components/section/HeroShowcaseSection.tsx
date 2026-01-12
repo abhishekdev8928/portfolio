@@ -1,4 +1,4 @@
-import React from "react";
+
 import { HERO_SHOWCASE_PROJECTS_CONFIG } from "@/utils/constant.ts";
 
 const HeroShowcaseSection = () => {

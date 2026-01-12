@@ -1,4 +1,3 @@
-import { MoveUp } from "lucide-react";
 
 
 const FooterSection = () => {

@@ -1,5 +1,4 @@
-import Avatar from "./ui/Avatar";
-import { AVATAR_LIST_CONFIG } from "../utils/constant";
+
 
 const IntroSection = () => {
   return (
