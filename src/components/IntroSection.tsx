@@ -163,7 +163,8 @@ const IntroSection = () => {
                   Me, Art, Photography
                 </p>
                 <div className="flex items-center w-fit">
-                  <div className="flex social-links   gap-2 group">
+                            
+<div className="flex social-links gap-2 group">
   <img
     className="w-12 h-12  transition-all duration-500 ease-out group-hover:ml-0"
     src="/social-icon/twitter.png"
