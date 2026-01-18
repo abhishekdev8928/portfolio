@@ -1,8 +1,80 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
 
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const IntroSection = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end:"50% top",
+          scrub: 2,
+          // markers:true
+        },
+      });
+
+      // Split the intro title text into words
+      const split = new SplitText(titleRef.current, { type: "words, chars" });
+
+      // Animate words of intro text
+      tl.from(split.words, {
+        y: 30,
+        opacity: 0,
+        stagger: 0.05,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+
+      // Animate main image
+      tl.from(
+        ".section-content img",
+        {
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+
+      // Animate left card
+      tl.from(
+        ".about-content-left",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      )
+
+      // Animate right tags container
+     .from(
+      ".social-links ",
+      {
+        
+        opacity: 0,
+        stagger: 0.12,
+      },
+      "-=0.3"
+    );
+      
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full ">
+    <section ref={sectionRef} className="w-full">
       <div className="section-wrapper space-y-8 lg:space-y-12">
         {/* Section Header */}
         <div className="section-name space-y-3">
@@ -13,7 +85,7 @@ const IntroSection = () => {
         </div>
 
         {/* Main Content */}
-        <div className="section-content flex flex-col lg:flex-row gap-10 lg:gap-16 items-center lg:items-start">
+        <div className="section-content flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           {/* Image */}
           <div className="w-full max-w-sm sm:max-w-md lg:max-w-[500px]">
             <img
@@ -26,7 +98,10 @@ const IntroSection = () => {
           {/* Text Content */}
           <div className="w-full max-w-3xl space-y-8 lg:space-y-14">
             {/* Intro Text */}
-            <h4 className="text-[#1E1E1E] font-primary font-light text-base sm:text-lg md:text-xl lg:text-[40px] leading-[1.3] tracking-[0.02em]">
+            <h4
+              ref={titleRef}
+              className="text-[#1E1E1E] font-primary font-light text-base sm:text-lg md:text-xl lg:text-[40px] leading-[1.3] tracking-[0.02em]"
+            >
               Hello there! My name is Pratham Mhavale. I am a UI/UX Designer
               based in Mumbai, creating thoughtful and user-centric designs.
               Besides designing digital products, I enjoy sketching,
@@ -38,7 +113,6 @@ const IntroSection = () => {
             <div className="about-content-wrapper flex justify-between flex-col lg:flex-row gap-6 w-full">
               {/* Left Card */}
               <div className="about-content-left max-w-[400px] space-y-6 rounded-lg p-4 sm:p-6 w-full lg:w-2/3 border border-[#B0B0B0]">
-                {/* Location */}
                 <div className="space-y-2.5">
                   <p className="font-secondary text-[#777777] text-sm capitalize">
                     Location
@@ -47,9 +121,7 @@ const IntroSection = () => {
                     Mumbai, India
                   </p>
                 </div>
-
-                {/* Position + Company */}
-                <div className="flex flex-col  sm:flex-row sm:justify-between gap-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-6">
                   <div className="space-y-2.5">
                     <p className="font-secondary text-[#777777] text-sm capitalize">
                       Position
@@ -58,7 +130,6 @@ const IntroSection = () => {
                       UI/UX Designer
                     </p>
                   </div>
-
                   <div className="space-y-2.5">
                     <p className="font-secondary text-[#777777] text-sm capitalize">
                       Current Company
@@ -68,8 +139,6 @@ const IntroSection = () => {
                     </p>
                   </div>
                 </div>
-
-                {/* Education */}
                 <div className="space-y-2.5">
                   <p className="font-secondary text-[#777777] text-sm capitalize">
                     Education
@@ -78,8 +147,6 @@ const IntroSection = () => {
                     BSc Computer Science
                   </p>
                 </div>
-
-                {/* Email */}
                 <div className="space-y-2.5">
                   <p className="font-secondary text-[#777777] text-sm capitalize">
                     Email
@@ -91,41 +158,35 @@ const IntroSection = () => {
               </div>
 
               {/* Right Tags */}
-              <div className="about-content-right space-y-4 lg:mt-auto w-fit">
-  <div className="flex items-center">
-    <div className="flex gap-2 group relative">
-
-      <img
-        className="size-12 transition-transform duration-300 ease-out"
-        src="/social-icon/twitter.png"
-        alt="Twitter"
-      />
-
-      <img
-        className="size-12 -translate-x-6 group-hover:translate-x-0 transition-transform duration-300 ease-out"
-        src="/social-icon/instagram.png"
-        alt="Instagram"
-      />
-
-      <img
-        className="size-12 -translate-x-12 group-hover:translate-x-0 transition-transform duration-300 ease-out"
-        src="/social-icon/facebook.png"
-        alt="Facebook"
-      />
-
-      <img
-        className="size-12 -translate-x-18 group-hover:translate-x-0 transition-transform duration-300 ease-out"
-        src="/social-icon/linkedin.png"
-        alt="LinkedIn"
-      />
-    </div>
-  </div>
-
-  <p className="text-[#5C5C5C] font-secondary font-medium text-sm sm:text-base">
-    Me, Art, Photography
-  </p>
+              <div className="about-content-right  space-y-4 w-full  max-w-[200px] lg:mt-auto ">
+                <p className="text-[#5C5C5C] w-fit  font-secondary font-medium text-sm sm:text-base">
+                  Me, Art, Photography
+                </p>
+                <div className="flex items-center w-fit">
+                  <div className="flex social-links   gap-2 group">
+  <img
+    className="w-12 h-12  transition-all duration-500 ease-out group-hover:ml-0"
+    src="/social-icon/twitter.png"
+    alt="Twitter"
+  />
+  <img
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
+    src="/social-icon/instagram.png"
+    alt="Instagram"
+  />
+  <img
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
+    src="/social-icon/facebook.png"
+    alt="Facebook"
+  />
+  <img
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
+    src="/social-icon/linkedin.png"
+    alt="LinkedIn"
+  />
 </div>
-
+                </div>
+              </div>
             </div>
           </div>
         </div>

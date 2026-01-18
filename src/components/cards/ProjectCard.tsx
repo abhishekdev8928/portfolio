@@ -5,8 +5,8 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, image }: ProjectCardProps) => {
   return (
-    <div className="w-[364px] p-4 rounded-lg bg-[#F2F2F2]">
-      <div className="group relative rounded-lg overflow-hidden">
+    <div className="w-[364px] px-4 rounded-lg bg-[#F2F2F2]">
+      <div className="group relative  overflow-hidden">
         {/* Image */}
         <img
           src={image}

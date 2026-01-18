@@ -3,7 +3,8 @@ import Button from "./ui/Button";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-center">
+  
+    <div className="flex navbar-wrapper justify-center">
       <div className="py-4 max-w-8xl w-full flex items-center px-10">
       
       <div className="flex-1  flex justify-start">
@@ -13,7 +14,7 @@ const Navbar = () => {
       </div>
 
       {/* Center section - will always be centered */}
-      <div className="flex items-center  gap-10">
+      <div className="flex social-link items-center  gap-10">
         {NAVLINK_CONFIG.map((item, index) => (
           <a
           
@@ -37,6 +38,7 @@ const Navbar = () => {
       </div>
     </div>
     </div>
+    
   );
 };
 

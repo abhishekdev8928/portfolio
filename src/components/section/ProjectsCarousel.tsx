@@ -11,38 +11,49 @@ interface ProjectsCarouselProps {
   direction?: "left" | "right";
 }
 
-const ProjectsCarousel = ({ projects, direction = "left" }: ProjectsCarouselProps) => {
+const ProjectsCarousel = ({
+  projects,
+  direction = "left",
+}: ProjectsCarouselProps) => {
   return (
-    
-
-      <Swiper
-      modules={[Autoplay, FreeMode]}
-      loop
-      slidesPerView="auto"
-      spaceBetween={20}
-      speed={3000}
-      freeMode={{
-        enabled: true,
-        momentum: false, 
-        sticky: false,
-        
-      }}
-      grabCursor={true}
-      autoplay={{
-        delay: 0,
-        disableOnInteraction: false,
-        reverseDirection: direction === "right",
-      }}
-      className="continuous-swiper"
+    <div
+      data-aos="fade-up"
+      data-aos-duration="900"
+      data-aos-easing="ease-out-cubic"
     >
-      {projects.map((project, index) => (
-       <SwiperSlide key={`${project.id}-${index}`} style={{ width: "auto" }}>
-          <ProjectCard title={project.title} image={project.image} />
-        </SwiperSlide>
-
-      ))}
-    </Swiper>
-    
+      <Swiper
+        modules={[Autoplay, FreeMode]}
+        loop
+        slidesPerView="auto"
+        spaceBetween={20}
+        speed={3000}
+        freeMode={{
+          enabled: true,
+          momentum: false,
+          sticky: false,
+        }}
+        grabCursor
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+          reverseDirection: direction === "right",
+        }}
+        className="continuous-swiper"
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide
+            key={`${project.id}-${index}`}
+            style={{ width: "auto" }}
+          
+          >
+            <ProjectCard
+              title={project.title}
+              image={project.image}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

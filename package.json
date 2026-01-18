@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@types/aos": "^3.0.7",
+    "aos": "^2.3.4",
+    "framer-motion": "^12.26.2",
     "gsap": "^3.13.0",
     "lucide-react": "^0.556.0",
     "portfolio": "link:",

@@ -1,6 +1,4 @@
 import Navbar from "./components/Navbar";
-
-import ProcessSection from "./components/ProcessSection";
 import WorkSection from "./components/WorkSection";
 import ConnectSection from "./components/ConnectSection";
 import FooterSection from "./components/FooterSection";
@@ -12,128 +10,206 @@ import IntroSection from "./components/IntroSection";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import HeroShowcaseSection from "./components/section/HeroShowcaseSection";
-import Button from "./components/ui/Button";
+import AOS from "aos";
 
 import ProjectsCarousel from "./components/section/ProjectsCarousel";
 import { PROJECTS_CAROUSEL_CONFIG } from "./utils/constant";
 import SkillsSection from "./components/section/SkillSection";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+import { SplitText } from "gsap/SplitText";
+import { useEffect, useRef } from "react";
+import ProcessSection from "./components/ProcessSection";
+import Button from "./components/ui/Button";
+import { ArrowUpRight } from "lucide-react";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
+
+gsap.registerPlugin(SplitText);
 const App = () => {
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-showcase-wrapper ",
-        start: "25% 90%",
-        end: "30% 90%",
-        // markers:true,
-        scrub: 3,
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroBtnRef = useRef<HTMLButtonElement>(null);
+
+ useGSAP(() => {
+  // Split heading into words
+  const split = new SplitText(titleRef.current, {
+    type: "words",
+  });
+
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "power3.out",
+      duration: 0.8,
+    },
+  });
+
+  tl
+    // Navbar
+    .from(".navbar-wrapper", {
+      y: -40,
+      opacity: 0,
+      duration: 0.6,
+    })
+
+    // Heading words
+    .from(
+      split.words,
+      {
+        y: 80,
+        opacity: 0,
+        stagger: 0.06,
       },
-    });
+      "-=0.2"
+    )
 
-    tl.to(".move-down", {
-      marginTop: 0,
-      duration: 3,
-      ease: "linear",
-      width:"100%"
-    });
+    // Social icons (cascade)
+    .from(
+      ".social-links ",
+      {
+        x: -30,
+        opacity: 0,
+        stagger: 0.12,
+      },
+      "-=0.3"
+    )
 
-    tl.to(".project-content", {
-      opacity: 1,
-    });
+    // Button (elastic pop)
+    .from(
+      heroBtnRef.current,
+      {
+        opacity: 0,
+        scale: 0.8,
+        ease: "elastic.out(1, 0.5)",
+        duration: 1,
+      },
+      "-=0.2"
+    )
+
+    .from(".first-img",{
+ opacity: 0,       
+     
+      duration: 0.8,    // animation duration
+      ease: "power2.out", 
+      stagger: 0.1,     
+    })
+
+  return () => {
+    split.revert();
+  };
+}, { scope: containerRef });
+
+
+
+  useEffect(() => {
+    const initAOS = () => {
+      AOS.init({
+        once: false,
+        mirror: true,
+        duration: 900,
+        easing: "ease-out-cubic",
+        offset: 150, // 👈 important
+        anchorPlacement: "top-bottom",
+      });
+
+      AOS.refreshHard(); // 👈 VERY IMPORTANT
+    };
+
+    // wait for layout + GSAP
+    const timeout = setTimeout(initAOS, 500);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <>
+      {/* <div className="w-full h-16 mt-[-100vh] fixed bottom-0 left-0 bg-red-900 "></div> */}
 
+      <div className="max-w-8xl main-wrapper bg-white relative z-[10] mx-auto">
+       <div ref={containerRef}>
+  <Navbar />
 
+  <section>
+    <div className="hero-wrapper w-full pt-[100px] pb-10 h-auto px-10">
+      <div className="w-full">
+        <div className="hero-content mx-auto mb-8 flex flex-col items-center w-full max-w-[976px]">
 
-   {/* <div className="w-full h-16 mt-[-100vh] fixed bottom-0 left-0 bg-red-900 "></div> */}
+          <h1
+            ref={titleRef}
+            className="tagline leading-none mt-2 text-center font-primary tracking-[-0.02em] text-[81px] font-normal"
+          >
+            Creating thoughtful designs that make digital products work better.
+          </h1>
 
+          <div className="flex gap-4 items-center mt-6">
 
-
-      <div className="max-w-8xl bg-white relative z-[10] mx-auto">
-
-        <Navbar />
-
-     
-      <section >
-        <div className="hero-wrapper  w-full pt-[100px] pb-6 h-auto relative px-10">
-          <div className="   w-full">
-          <div className="hero-content mx-auto mb-8  flex flex-col items-center w-full max-w-[976px]">
-            <h1 className="tagline leading-none mt-2  text-center font-primary tracking-[-0.02em] text-[81px] font-normal">
-              Creating thoughtful designs that make digital products work
-              better.
-            </h1>
-
-            <div className="flex gap-4 items-center mt-6">
-            <div className="flex gap-2 group">
+            
+<div className="flex social-links gap-2 group">
   <img
-    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
     src="/social-icon/twitter.png"
     alt="Twitter"
   />
-
   <img
-    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
     src="/social-icon/instagram.png"
     alt="Instagram"
   />
-
   <img
-    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
     src="/social-icon/facebook.png"
     alt="Facebook"
   />
-
   <img
-    className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0"
+    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
     src="/social-icon/linkedin.png"
     alt="LinkedIn"
   />
 </div>
 
 
-              <Button
-                label={"Let’s Connect "}
-                className="bg-[#FF6E00]  py-4 pl-[32px] pr-6"
-              />
-            </div>
+
+           <div ref={heroBtnRef} >
+             <button
+              
+              className="bg-[#FF6E00] py-4 pl-[32px] pr-6 cursor-pointer justify-center rounded-full flex gap-2 items-center hover:translate-x-[3px] hover:translate-y-[4px] transition-all duration-150 ease-out  hover:shadow-none border border-black shadow-[3px_4px_0px_0px_#2D2D2D]"
+            >
+              Let’s Connect
+              <ArrowUpRight size={20} />
+            </button>
+           </div>
+
           </div>
         </div>
-        </div>
-      </section>
-
-<section className="hero-showcase-wrapper ">
-  <HeroShowcaseSection />
-</section>
-
-
-     
-
-
-  <section>
-
-    <div className=" pb-40 text-black">
- <ProjectsCarousel  projects={PROJECTS_CAROUSEL_CONFIG} />
-
-</div>
+      </div>
+    </div>
   </section>
 
-   
-      <SkillsSection />
+  <section className="hero-showcase-wrapper  ">
+          <HeroShowcaseSection />
+        </section>
+</div>
 
-     
-   
-      <IntroSection />
 
-      <ProcessSection />
+        
 
-      <WorkSection />
+        <section>
+          <div className=" pb-40 text-black">
+            <ProjectsCarousel projects={PROJECTS_CAROUSEL_CONFIG} />
+          </div>
+        </section>
 
-      <ConnectSection />
+        <SkillsSection />
 
-      <FooterSection />
+        <IntroSection />
+
+        {/* <ProcessSection /> */}
+
+        <ProcessSection />
+
+        <WorkSection />
+
+        <ConnectSection />
+
+        <FooterSection />
       </div>
     </>
   );
@@ -141,16 +217,10 @@ const App = () => {
 
 export default App;
 
-
-
-
 export const skillsData = [
   {
     title: "UI/UX Design",
-    items: [
-      "User-Centered Design",
-      "Problem-Solving <br /> Usability-Focused",
-    ],
+    items: ["User-Centered Design", "Problem-Solving <br /> Usability-Focused"],
   },
   {
     title: "Visual Design",
@@ -194,13 +264,6 @@ export const designPrinciplesData = [
   },
   {
     title: "Tools",
-    items: [
-      "Figma",
-      "Canva",
-      "ChatGPT",
-      "Gemini",
-      "Framer",
-      "Spline",
-    ],
+    items: ["Figma", "Canva", "ChatGPT", "Gemini", "Framer", "Spline"],
   },
 ];

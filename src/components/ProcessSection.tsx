@@ -1,67 +1,112 @@
-// ProcessSection.tsx
 import React, { useEffect } from "react";
-import ProcessCard from "./cards/ProcessCard";
-import { PROCESS_STEPS } from "../../src/utils/constant";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-gsap.registerPlugin(ScrollTrigger);
+const ProcessRow = ({ number, title, desc, img, delay }) => {
+  return (
+    <div
+      className="flex justify-between border-b border-[#CECECE]"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay={delay}
+      data-aos-easing="ease-out-cubic"
+      data-aos-offset="140"
+      data-aos-mirror="true"   // ✅ reverse on scroll up
+    >
+      {/* Number */}
+      <h2 className="font-primary text-[#8F8F8F] font-light text-[48px] leading-none">
+        {number}
+      </h2>
 
-const ProcessSection: React.FC = () => {
+      {/* Content */}
+      <div className="max-w-[944px] h-[300px] w-full flex gap-6">
+        {/* Image */}
+        <img
+          src={img}
+          alt=""
+          className="w-[420px] rounded-t-lg h-full object-cover"
+        />
+
+        {/* Text */}
+        <div className="space-y-4">
+          <h2 className="font-primary font-normal text-[40px] leading-none">
+            {title}
+          </h2>
+
+          <p className="font-secondary text-[#686868] text-[18px] leading-[1.2] tracking-[0.02em]">
+            {desc}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProcessSection = () => {
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".trigger-point",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1.5,
-      },
+    AOS.init({
+      once: false,
+      mirror: true,
+      easing: "ease-out-cubic",
+      duration: 800,
+      offset: 140,
     });
-
-    tl.to(
-      ".img-div",
-      {
-        height: 0,
-        stagger: 0.4,
-
-        ease: "linear",
-      },
-      "a"
-    );
-
-    tl.to(
-      ".card",
-      {
-        borderBottomColor: "#e5e5e5",
-        stagger: 0.2,
-      },
-      "a"
-    );
   }, []);
 
   return (
-    <section className="process-container  section-wrapper">
-      <div className=" ">
-        <h2 className="font-primary text-[48px] leading-none">
-          Here’s how I shape every project.
-        </h2>
+    <div className="bg-[#FAFAFA] py-[96px] px-10">
+      <div className="space-y-10">
+        {/* Section Title */}
+        <div
+          className="border-b border-[#D9D9D9] h-[40px]"
+          data-aos="fade-up"
+          data-aos-duration="600"
+        >
+          <h4 className="font-primary text-black text-lg lg:text-2xl">
+            Project Flow
+          </h4>
+        </div>
 
-        <div className="h-[800vh]  trigger-point  relative">
-          <div className="sticky pt-[60px] top-0 left-0 w-full  space-y-10  ">
-            {PROCESS_STEPS.map((step) => (
-              <ProcessCard
-                key={step.number}
-                number={step.number}
-                title={step.title}
-                description={step.description}
-                imageHeight={300}
-                
-              />
-            ))}
-          </div>
+        {/* Rows */}
+        <div className="flex flex-col space-y-12">
+          <ProcessRow
+            number="01"
+            title="Research & Discovery"
+            desc="Before designing, I gather context, identify challenges, and clarify what the product needs to solve."
+            img="/project/project-image-01.webp"
+            delay={0}
+          />
+          <ProcessRow
+            number="02"
+            title="Brainstorm & Ideation"
+            desc="Exploring multiple directions, concepts, and approaches before narrowing down."
+            img="/project/project-image-01.webp"
+            delay={120}
+          />
+          <ProcessRow
+            number="03"
+            title="Sketch & Wireframe"
+            desc="Low-fidelity sketches and wireframes to validate structure and flow."
+            img="/project/project-image-01.webp"
+            delay={240}
+          />
+          <ProcessRow
+            number="04"
+            title="Hi-fi Design"
+            desc="Pixel-perfect visuals focused on clarity, usability, and aesthetics."
+            img="/project/project-image-02.webp"
+            delay={360}
+          />
+          <ProcessRow
+            number="05"
+            title="Feedback & Iteration"
+            desc="Refining designs based on feedback and usability insights."
+            img="/project/project-image-01.webp"
+            delay={480}
+          />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
