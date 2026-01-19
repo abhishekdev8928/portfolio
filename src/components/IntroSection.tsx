@@ -10,71 +10,97 @@ const IntroSection = () => {
   const titleRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end:"50% top",
-          scrub: 2,
-          // markers:true
-        },
-      });
+ const ctx = gsap.context(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 60%",
+      end: "50% top",
+      scrub: 3,
+      // markers:true
+    },
+  });
 
-      // Split the intro title text into words
-      const split = new SplitText(titleRef.current, { type: "words, chars" });
+  const split = new SplitText(titleRef.current, { type: "words" });
 
-      // Animate words of intro text
-      tl.from(split.words, {
-        y: 30,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 0.6,
-        ease: "power2.out",
-      });
+  // Intro text
+  tl.from(split.words, {
+    y: 30,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 0.6,
+    ease: "power2.out",
+  });
 
-      // Animate main image
-      tl.from(
-        ".section-content img",
-        {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.4"
-      );
+  // Image
+  tl.from(
+    ".section-content img",
+    {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    },
+    "+=0.1"
+  );
 
-      // Animate left card
-      tl.from(
-        ".about-content-left",
-        {
-          y: 50,
-          opacity: 0,
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        "-=0.5"
-      )
+  // Left card container
+  tl.from(
+    ".about-content-left",
+    {
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    },
+    "+=0.1"
+  );
 
-      // Animate right tags container
-     .from(
-      ".social-links ",
-      {
-        
-        opacity: 0,
-        stagger: 0.12,
-      },
-      "-=0.3"
-    );
-      
-    }, sectionRef);
+  // ✅ INNER ITEMS (Location, Position, Company, etc.)
+  tl.from(
+    ".about-content-left > div",
+    {
+      y: 20,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.4,
+      ease: "power3.out",
+    },
+    "-=0.3"
+  );
+
+  // Right text
+  tl.from(
+    ".about-content-right p",
+    {
+      y: 15,
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    },
+    "-=0.4"
+  );
+
+  // Social icons (actual smooth stagger)
+  tl.from(
+    ".social-links",
+    {
+      y: 20,
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.4,
+      ease: "power2.out",
+    },
+    "-=0.4"
+  );
+}, sectionRef);
+
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full">
+    <section id="about" ref={sectionRef} className="w-full">
       <div className="section-wrapper space-y-8 lg:space-y-12">
         {/* Section Header */}
         <div className="section-name space-y-3">
@@ -162,31 +188,30 @@ const IntroSection = () => {
                 <p className="text-[#5C5C5C] w-fit  font-secondary font-medium text-sm sm:text-base">
                   Me, Art, Photography
                 </p>
-                <div className="flex items-center w-fit">
-                            
-<div className="flex social-links gap-2 group">
-  <img
-    className="w-12 h-12  transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/twitter.png"
-    alt="Twitter"
-  />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/instagram.png"
-    alt="Instagram"
-  />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/facebook.png"
-    alt="Facebook"
-  />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/linkedin.png"
-    alt="LinkedIn"
-  />
+              <div className="flex items-center w-fit">
+  <div className="flex social-links gap-2 group">
+
+     <a href="https://www.instagram.com/prathammhavale/" target="__blank" className="relative group/icon">
+      <img className="size-[50px] rounded-full" src="/social-icon/me.jpg" />
+      <span className="tooltip">Me</span>
+    </a>
+
+    <a href="https://www.instagram.com/victorblade07/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/victor-blade.jpg" />
+      <span className="tooltip">art</span>
+    </a>
+
+   
+
+    <a href="https://www.instagram.com/whateverisee00/" target="__blank"  className="relative group/icon -ml-6 group-hover:ml-0  ">
+      <img className="size-[50px] rounded-full" src="/social-icon/whatever.jpg" />
+      <span className="tooltip">Photography
+</span>
+    </a>
+
+  </div>
 </div>
-                </div>
+
               </div>
             </div>
           </div>

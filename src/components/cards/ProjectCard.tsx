@@ -5,13 +5,13 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, image }: ProjectCardProps) => {
   return (
-    <div className="w-[364px] px-4 rounded-lg bg-[#F2F2F2]">
-      <div className="group relative  overflow-hidden">
+    <div className="w-[364px] h-60 px-4 rounded-lg bg-[#F2F2F2]">
+      <div className="group w-full h-full relative  overflow-hidden">
         {/* Image */}
         <img
           src={image}
           alt={title}
-          className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full object-contain rounded-lg h-full transition-transform duration-500 group-hover:scale-105"
           draggable={false}
         />
 

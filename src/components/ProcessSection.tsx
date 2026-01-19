@@ -54,7 +54,7 @@ const ProcessSection = () => {
   }, []);
 
   return (
-    <div className="bg-[#FAFAFA] py-[96px] px-10">
+    <div id="workflow" className="bg-[#FAFAFA] py-[96px] px-10">
       <div className="space-y-10">
         {/* Section Title */}
         <div
@@ -73,35 +73,35 @@ const ProcessSection = () => {
             number="01"
             title="Research & Discovery"
             desc="Before designing, I gather context, identify challenges, and clarify what the product needs to solve."
-            img="/project/project-image-01.webp"
+            img="/process/research.webp"
             delay={0}
           />
           <ProcessRow
             number="02"
             title="Brainstorm & Ideation"
             desc="Exploring multiple directions, concepts, and approaches before narrowing down."
-            img="/project/project-image-01.webp"
+            img="/process/brainstorm.webp"
             delay={120}
           />
           <ProcessRow
             number="03"
             title="Sketch & Wireframe"
             desc="Low-fidelity sketches and wireframes to validate structure and flow."
-            img="/project/project-image-01.webp"
+            img="/process/sketching.webp"
             delay={240}
           />
           <ProcessRow
             number="04"
             title="Hi-fi Design"
             desc="Pixel-perfect visuals focused on clarity, usability, and aesthetics."
-            img="/project/project-image-02.webp"
+            img="/process/wireframe.webp"
             delay={360}
           />
           <ProcessRow
             number="05"
             title="Feedback & Iteration"
             desc="Refining designs based on feedback and usability insights."
-            img="/project/project-image-01.webp"
+           img="/process/feedback.webp"
             delay={480}
           />
         </div>

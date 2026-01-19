@@ -8,10 +8,43 @@
 
             <div className="flex gap-4 items-center mt-6">
               <div className="flex social-links gap-2 group">
-                <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/twitter.png" alt="Twitter"/>
+                {/* <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/twitter.png" alt="Twitter"/>
                 <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/instagram.png" alt="Instagram"/>
                 <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/facebook.png" alt="Facebook"/>
-                <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/linkedin.png" alt="LinkedIn"/>
+                <img className="-ml-6 size-12 transition-all duration-300 ease-out group-hover:ml-0" src="/social-icon/linkedin.png" alt="LinkedIn"/> */}
+
+                <a href="https://www.linkedin.com/in/pratham-mhavale/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/linkedin.png" />
+      <span className="tooltip">art</span>
+    </a>
+
+
+    <a href="https://www.instagram.com/victorblade07/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/instagram.png" />
+      <span className="tooltip">art</span>
+    </a>
+
+    <a
+  href="mailto:prathammhavale38@gmail.com"
+  className="relative group/icon -ml-6 group-hover:ml-0"
+>
+  <img
+    className="size-[50px] rounded-full"
+    src="/social-icon/instagram.png"
+    alt="Email"
+  />
+  <span className="tooltip">Mail me</span>
+</a>
+
+
+     <a href="https://www.instagram.com/whateverisee00/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/instagram.png" />
+      <span className="tooltip">art</span>
+    </a>
+
+
+
+
               </div>
 
              <Button

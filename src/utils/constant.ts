@@ -98,33 +98,88 @@ export interface Project {
 export const PROJECTS_CAROUSEL_CONFIG: Project[] = [
   {
     id: 1,
-    title: "Project Name",
-    image: "/carousel/carousel-top-one.png",
+    title: "Art NGO Hero",
+    image: "/carousel/Hero-ArtNgo.png",
   },
   {
     id: 2,
-    title: "TravelBuddy Web",
-    image: "/carousel/carousel-top-two.png",
+    title: "SaaS Illustration Studio",
+    image: "/carousel/Hero-SaasIllustrationStudio.png",
   },
   {
     id: 3,
-    title: "TravelBuddy Web",
-    image: "/carousel/carousel-top-three.png",
+    title: "Travel Hotel",
+    image: "/carousel/Hero-TravelHotel.png",
   },
   {
     id: 4,
-    title: "TravelBuddy Web",
-    image: "/carousel/carousel-top-four.png",
+    title: "Product Features",
+    image: "/carousel/Product-Features.png",
   },
   {
     id: 5,
-    title: "TravelBuddy Web",
-    image: "/carousel/carousel-top-two.png",
+    title: "Pricing Screen",
+    image: "/carousel/PricingScreen.png",
   },
   {
     id: 6,
-    title: "TravelBuddy Web",
-    image: "/carousel/carousel-top-one.png",
+    title: "Testimonials",
+    image: "/carousel/Testimonial.png",
+  },
+  {
+    id: 7,
+    title: "Testimonial Section",
+    image: "/carousel/Testimonial_Section.png",
+  },
+  {
+    id: 8,
+    title: "Features Layout",
+    image: "/carousel/FEatures01.png",
+  },
+  {
+    id: 9,
+    title: "Furniture Verticles",
+    image: "/carousel/FurnitureVerticles.png",
+  },
+  {
+    id: 10,
+    title: "About Carousel One",
+    image: "/carousel/about-carousel-one.png",
+  },
+  {
+    id: 11,
+    title: "CTA – Designer",
+    image: "/carousel/Cta-Designer.png",
+  },
+  {
+    id: 12,
+    title: "CTA – Fitness Community",
+    image: "/carousel/Cta-FitnessCommunity.png",
+  },
+  {
+    id: 13,
+    title: "CTA – Fitness Community v2",
+    image: "/carousel/Cta-FitnessCommunity2.png",
+  },
+  {
+    id: 14,
+    title: "404 Page",
+    image: "/carousel/404Page.png",
+  },
+  {
+    id: 15,
+    title: "Creative Concept 10",
+    image: "/carousel/10.png",
+  },
+  {
+    id: 16,
+    title: "Creative Concept 11",
+    image: "/carousel/11.png",
+  },
+  {
+    id: 17,
+    title: "Creative Concept 12",
+    image: "/carousel/12.png",
   },
 ];
 
@@ -135,38 +190,96 @@ export const PROJECTS_CAROUSEL_CONFIG: Project[] = [
 export const HERO_SHOWCASE_PROJECTS_CONFIG = [
   {
     id: "1",
-    title: "Rivora",
+    title: "MasterCard – Landing Page Concept",
     subtitle:
-      "A mobile app concept that helps shoppers find products faster in-store.",
+      "A modern fintech landing page focused on trust, clarity, and conversion.",
     description:
-      "Focused on improving navigation, search, and checkout flow.",
+      "Using strong visual hierarchy and clean layouts to communicate features effectively.",
 
     tags: [
       { id: "ux", label: "UX Design" },
-      { id: "mobile", label: "Mobile App" },
-      { id: "navigation", label: "Navigation" },
+      { id: "hierarchy", label: "Visual Hierarchy" },
+      { id: "fintech", label: "Fintech UI" },
+      { id: "conversion", label: "Conversion Design" },
     ],
 
-    heroImageSrc: "/project/project-image-01.webp",
-    imageAlt: "The Bridge of Cadio, New Zealand",
+    heroImageSrc: "/project/Mastercard_hero.webp",
+    imageAlt: "MasterCard landing page design",
   },
 
   {
     id: "2",
-    title: "Canva Cloud",
+    title: "Manipal University – Homepage Redesign",
     subtitle:
-      "A mobile app concept that helps shoppers find products faster in-store.",
+      "A redesigned university homepage improving navigation and information clarity.",
     description:
-      " Focused on improving navigation, search, and checkout flow.",
+      "Prioritizing accessibility, structured content, and clear calls to action for students and parents.",
 
     tags: [
-      { id: "ui", label: "UX Design" },
-      { id: "web", label: "Mobile App" },
-      {id:"navigation",label:"Navigation"}
+      { id: "ux", label: "UX Design" },
+      { id: "ia", label: "Information Architecture" },
+      { id: "accessibility", label: "Accessibility" },
+      { id: "edu", label: "Educational UI" },
     ],
 
-    heroImageSrc: "/project/project-image-02.webp",
-    imageAlt: "The Bridge of Cadio, New Zealand",
+    heroImageSrc: "/project/manipaluni_hero.webp",
+    imageAlt: "Manipal University homepage redesign",
+  },
 
+  {
+    id: "3",
+    title: "Caffee Website",
+    subtitle:
+      "A warm, minimal caffee website designed to reflect brand personality.",
+    description:
+      "Through imagery, typography, and smooth content flow that enhances the digital dining experience.",
+
+    tags: [
+      { id: "ui", label: "UI Design" },
+      { id: "brand", label: "Brand Identity" },
+      { id: "type", label: "Typography" },
+      { id: "emotion", label: "Emotional Design" },
+    ],
+
+    heroImageSrc: "/project/Caffee-HeroSection.webp",
+    imageAlt: "Cafe website design",
+  },
+
+  {
+    id: "4",
+    title: "Trekking Landing Page",
+    subtitle:
+      "An immersive trekking landing page designed to inspire adventure.",
+    description:
+      "Using bold visuals, clear sections, and engaging content to guide users toward exploration.",
+
+    tags: [
+      { id: "landing", label: "Landing Page Design" },
+      { id: "story", label: "Visual Storytelling" },
+      { id: "engagement", label: "User Engagement" },
+      { id: "ui", label: "UI Design" },
+    ],
+
+    heroImageSrc: "/project/trekkingpage_hero.webp",
+    imageAlt: "Trekking landing page design",
+  },
+
+  {
+    id: "5",
+    title: "Design Studio Website",
+    subtitle:
+      "A clean and expressive website for a creative design studio.",
+    description:
+      "Focused on showcasing work, building credibility, and maintaining strong visual consistency throughout.",
+
+    tags: [
+      { id: "portfolio", label: "Portfolio Design" },
+      { id: "creative", label: "Creative UI" },
+      { id: "layout", label: "Layout Design" },
+      { id: "consistency", label: "Visual Consistency" },
+    ],
+
+    heroImageSrc: "/project/Monochrome_wedesign.webp",
+    imageAlt: "Design studio website",
   },
 ];

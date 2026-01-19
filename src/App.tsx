@@ -19,7 +19,7 @@ import SkillsSection from "./components/section/SkillSection";
 import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef } from "react";
 import ProcessSection from "./components/ProcessSection";
-import Button from "./components/ui/Button";
+
 import { ArrowUpRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 
@@ -134,7 +134,7 @@ const App = () => {
 
           <h1
             ref={titleRef}
-            className="tagline leading-none mt-2 text-center font-primary tracking-[-0.02em] text-[81px] font-normal"
+            className="tagline leading-none mt-2 text-center font-primary tracking-[-0.02em] text-[64px] font-normal"
           >
             Creating thoughtful designs that make digital products work better.
           </h1>
@@ -143,31 +143,43 @@ const App = () => {
 
             
 <div className="flex social-links gap-2 group">
+ 
+                <a href="https://www.linkedin.com/in/pratham-mhavale/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/linkedin.png" />
+      
+    </a>
+
+
+    <a href="https://www.instagram.com/victorblade07/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/instagram.png" />
+      
+    </a>
+
+    <a
+  href="mailto:prathammhavale38@gmail.com"
+  className="relative group/icon -ml-6   group-hover:ml-0"
+>
   <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/twitter.png"
-    alt="Twitter"
+    className="size-[50px]  rounded-full"
+   src="/social-icon/gmail.webp"
+    alt="Email"
   />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/instagram.png"
-    alt="Instagram"
-  />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/facebook.png"
-    alt="Facebook"
-  />
-  <img
-    className="w-12 h-12 -ml-6 transition-all duration-500 ease-out group-hover:ml-0"
-    src="/social-icon/linkedin.png"
-    alt="LinkedIn"
-  />
+ 
+</a>
+
+
+     <a href="https://www.instagram.com/whateverisee00/" target="__blank" className="relative group/icon -ml-6 group-hover:ml-0 ">
+      <img className="size-[50px] rounded-full" src="/social-icon/twitter.png" />
+     
+    </a>
+
+
 </div>
 
 
 
            <div ref={heroBtnRef} >
+            <a download href="/resume/Pratham_Mhavale_UIUX_Designer_Resume.pdf">
              <button
               
               className="bg-[#FF6E00] py-4 pl-[32px] pr-6 cursor-pointer justify-center rounded-full flex gap-2 items-center hover:translate-x-[3px] hover:translate-y-[4px] transition-all duration-150 ease-out  hover:shadow-none border border-black shadow-[3px_4px_0px_0px_#2D2D2D]"
@@ -175,6 +187,7 @@ const App = () => {
               Let’s Connect
               <ArrowUpRight size={20} />
             </button>
+            </a>
            </div>
 
           </div>

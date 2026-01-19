@@ -68,14 +68,17 @@ const ConnectSection = () => {
           
          <div  ref={heroBtnRef}>
 
-           <button
-         
-            
-            className=" px-8 py-4 bg-[#FF6E00]  pr-6 cursor-pointer justify-center rounded-full flex gap-2 items-center hover:translate-x-[3px] hover:translate-y-[4px] hover:shadow-none transition-all duration-150 ease-out    border border-black shadow-[3px_4px_0px_0px_#2D2D2D]"
-          >
-            prathammhavale38@gmail.com
-            <ArrowUpRight size={20} />
-          </button>
+          <a
+  href="mailto:prathammhavale38@gmail.com"
+  className="px-8 py-4 bg-[#FF6E00] pr-6 cursor-pointer justify-center rounded-full flex gap-2 items-center
+             hover:translate-x-[3px] hover:translate-y-[4px] hover:shadow-none
+             transition-all duration-150 ease-out
+             border border-black shadow-[3px_4px_0px_0px_#2D2D2D]"
+>
+  prathammhavale38@gmail.com
+  <ArrowUpRight size={20} />
+</a>
+
          </div>
         </div>
       </div>
