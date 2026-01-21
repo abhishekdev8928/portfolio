@@ -10,8 +10,8 @@ const FooterSection = () => {
     });
   };
   return (
-    <section className="relative">
-      <div className="pt-[64px] px-10 pb-[24px]   flex flex-col mx-auto bg-[#1E1E1E]  max-w-(--w-8xl)">
+    <section className="relative bg-[#1E1E1E]  ">
+      <div className="pt-[64px] px-10 pb-[24px]   flex flex-col mx-auto max-w-8xl">
         <div className="flex  space-y-2 justify-between items-start ">
           <h4 className="font-primary font-light text-[16px] leading-none text-center text-white">pratham mhavale</h4>
 
@@ -35,7 +35,7 @@ const FooterSection = () => {
 
         <div className="absolute flex space-y-4 flex-col top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2">
 
-          <p className="font-primary  text-white font-normal text-[18px] leading-[1.2] tracking-[0%] text-center
+          <p className="font-accent  text-white font-normal text-[18px] leading-[1.2] tracking-[0%] text-center
 ">Even if you are on the right track, <br /> 
 you will get run over if you just sit there</p>
 <small className="text-[#5C5C5C] font-primary font-normal text-[14px] leading-[1.2] tracking-[0%] text-right

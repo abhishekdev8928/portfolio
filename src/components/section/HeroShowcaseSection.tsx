@@ -64,7 +64,7 @@ const HeroShowcaseSection = () => {
   }, []);
 
   return (
-    <section id="project" className="hero-showcase-wrapper project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]">
+    <section id="project" className="hero-showcase-wrapper mx-auto project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]">
       {HERO_SHOWCASE_PROJECTS_CONFIG.map((project, index) => (
         <div
           key={project.id}

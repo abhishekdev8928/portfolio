@@ -41,7 +41,7 @@ const IntroSection = () => {
       duration: 0.8,
       ease: "power2.out",
     },
-    "+=0.1"
+    "-=2"
   );
 
   // Left card container
@@ -56,7 +56,7 @@ const IntroSection = () => {
     "+=0.1"
   );
 
-  // ✅ INNER ITEMS (Location, Position, Company, etc.)
+ 
   tl.from(
     ".about-content-left > div",
     {
@@ -101,7 +101,7 @@ const IntroSection = () => {
 
   return (
     <section id="about" ref={sectionRef} className="w-full">
-      <div className="section-wrapper space-y-8 lg:space-y-12">
+      <div className="section-wrapper max-w-8xl mx-auto space-y-8 lg:space-y-12">
         {/* Section Header */}
         <div className="section-name space-y-3">
           <h4 className="font-primary font-normal text-black text-lg sm:text-xl lg:text-2xl capitalize">

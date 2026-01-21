@@ -71,10 +71,13 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section className="bg-black section-wrapper space-y-10">
+    <section className="bg-black w-full section-wrapper space-y-10">
       {/* HEADER */}
-      <div
-        className="ml-auto space-y-4"
+     <div className="max-w-8xl mx-auto space-y-4">
+
+
+       <div
+      
         data-aos="fade-up"
       >
         <h4 className="text-white text-[24px]">Skills</h4>
@@ -82,7 +85,7 @@ export default function SkillsSection() {
       </div>
 
       {/* CONTENT */}
-      <div className="ml-auto flex flex-wrap justify-end gap-20">
+      <div className=" flex flex-wrap justify-end gap-20">
         {/* LEFT COLUMN */}
         <div className="w-full md:w-[400px] space-y-12">
           {skillsData.map((block, i) => (
@@ -149,6 +152,7 @@ export default function SkillsSection() {
           ))}
         </div>
       </div>
+     </div>
     </section>
   );
 }

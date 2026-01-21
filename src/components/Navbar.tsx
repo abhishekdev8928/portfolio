@@ -75,14 +75,18 @@ const Navbar = () => {
     border border-black
     shadow-[3px_4px_0px_0px_#2D2D2D]
     transition-all duration-150 ease-out
-    hover:translate-x-[3px] hover:translate-y-[4px] px-5 py-4 hover:shadow-none
+    hover:translate-x-[3px] min-w-[137px] h-[48px] hover:translate-y-[4px] pl-5 pr-2 hover:shadow-none
   "
 >
-  <span className="font-secondary text-[#2D2D2D] leading-none tracking-normal text-[16px] font-medium">
+  <span className="font-secondary text-[#2D2D2D] leading-none tracking-normal text-[16px] font-semibold">
    Connect
   </span>
- 
-   <MailIcon size="20" />
+ <div className="size-[36px] bg-black shrink-0 rounded-full flex justify-center items-center">
+<MailIcon size="20" color="white" />
+
+
+ </div>
+   
  
 </a>
 

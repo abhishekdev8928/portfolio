@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { section } from "framer-motion/client";
 
 const ProcessRow = ({ number, title, desc, img, delay }) => {
   return (
@@ -28,7 +29,7 @@ const ProcessRow = ({ number, title, desc, img, delay }) => {
         />
 
         {/* Text */}
-        <div className="space-y-4">
+        <div className="space-y-4 flex-1">
           <h2 className="font-primary font-normal text-[40px] leading-none">
             {title}
           </h2>
@@ -54,11 +55,15 @@ const ProcessSection = () => {
   }, []);
 
   return (
-    <div id="workflow" className="bg-[#FAFAFA] py-[96px] px-10">
+<section className="bg-[#FAFAFA]">
+
+
+
+    <div id="workflow" className="max-w-8xl mx-auto py-24 px-10">
       <div className="space-y-10">
         {/* Section Title */}
         <div
-          className="border-b border-[#D9D9D9] h-[40px]"
+          className="border-b border-[#D9D9D9] h-10"
           data-aos="fade-up"
           data-aos-duration="600"
         >
@@ -107,6 +112,7 @@ const ProcessSection = () => {
         </div>
       </div>
     </div>
+</section>
   );
 };
 
