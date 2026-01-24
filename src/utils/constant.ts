@@ -205,6 +205,9 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
 
     heroImageSrc: "/project/Mastercard_hero.webp",
     imageAlt: "MasterCard landing page design",
+
+    prototypeUrl:
+      "https://www.figma.com/proto/iqRjdYfKmCmtA7gcV51b1W/IceBack-Landing-Page-%E2%80%93-Pratham-Mhavale?node-id=115-1726&scaling=min-zoom&content-scaling=fixed&page-id=2%3A3&starting-point-node-id=115%3A1726",
   },
 
   {
@@ -224,6 +227,9 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
 
     heroImageSrc: "/project/manipaluni_hero.webp",
     imageAlt: "Manipal University homepage redesign",
+
+    prototypeUrl:
+      "https://www.figma.com/proto/O0A7ZelgfwSa8XdBw0v4Jt/ManipalUni_Homepage_Redesign?node-id=23-901&scaling=min-zoom&content-scaling=fixed&page-id=23%3A900&starting-point-node-id=23%3A901",
   },
 
   {
@@ -243,6 +249,9 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
 
     heroImageSrc: "/project/Caffee-HeroSection.webp",
     imageAlt: "Cafe website design",
+
+    prototypeUrl:
+      "https://www.figma.com/proto/bzeVneGr28Hk0I86t3gDXo/Cafe_website_template?node-id=60-177&scaling=min-zoom&content-scaling=fixed&page-id=17%3A86&starting-point-node-id=60%3A177",
   },
 
   {
@@ -262,6 +271,9 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
 
     heroImageSrc: "/project/trekkingpage_hero.webp",
     imageAlt: "Trekking landing page design",
+
+    prototypeUrl:
+      "https://www.figma.com/proto/Ckd3Iij63zRBIC3AQxO54s/Trekking_LandingPage_PrathamMhavale?node-id=2110-145&scaling=min-zoom&content-scaling=fixed&page-id=12%3A3&starting-point-node-id=2110%3A145",
   },
 
   {
@@ -281,5 +293,9 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
 
     heroImageSrc: "/project/Monochrome_wedesign.webp",
     imageAlt: "Design studio website",
+
+    prototypeUrl:
+      "https://www.figma.com/proto/iqcCxyNGEGvEHyRlOdDhJn/Olio_Assignment?node-id=46-442&scaling=min-zoom&content-scaling=fixed&page-id=8%3A552&starting-point-node-id=46%3A442",
   },
 ];
+

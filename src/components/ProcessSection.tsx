@@ -1,118 +1,140 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { section } from "framer-motion/client";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const ProcessRow = ({ number, title, desc, img, delay }) => {
-  return (
-    <div
-      className="flex justify-between border-b border-[#CECECE]"
-      data-aos="fade-up"
-      data-aos-duration="800"
-      data-aos-delay={delay}
-      data-aos-easing="ease-out-cubic"
-      data-aos-offset="140"
-      data-aos-mirror="true"   // ✅ reverse on scroll up
-    >
-      {/* Number */}
-      <h2 className="font-primary text-[#8F8F8F] font-light text-[48px] leading-none">
-        {number}
-      </h2>
+gsap.registerPlugin(ScrollTrigger);
 
-      {/* Content */}
-      <div className="max-w-[944px] h-[300px] w-full flex gap-6">
-        {/* Image */}
-        <img
-          src={img}
-          alt=""
-          className="w-[420px] rounded-t-lg h-full object-cover"
-        />
+// Type for each process row
+interface ProcessRowProps {
+  number: string;
+  title: string;
+  desc: string;
+  img: string;
+}
 
-        {/* Text */}
-        <div className="space-y-4 flex-1">
-          <h2 className="font-primary font-normal text-[40px] leading-none">
-            {title}
-          </h2>
+const ProcessRow = React.forwardRef<HTMLDivElement, ProcessRowProps>(
+  ({ number, title, desc, img }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className="flex justify-between border-b border-[#CECECE] opacity-0 translate-y-10"
+      >
+        {/* Number */}
+        <h2 className="font-primary text-[#8F8F8F] font-light text-[48px] leading-none">
+          {number}
+        </h2>
 
-          <p className="font-secondary text-[#686868] text-[18px] leading-[1.2] tracking-[0.02em]">
-            {desc}
-          </p>
+        {/* Content */}
+        <div className="max-w-[944px] h-[300px] w-full flex gap-6">
+          {/* Image */}
+          <img
+            src={img}
+            alt={title}
+            className="w-[420px] rounded-t-lg h-full object-cover"
+          />
+
+          {/* Text */}
+          <div className="space-y-4 flex-1">
+            <h2 className="font-primary font-normal text-[40px] leading-none">
+              {title}
+            </h2>
+
+            <p className="font-secondary text-[#686868] text-[18px] leading-[1.2] tracking-[0.02em]">
+              {desc}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
-const ProcessSection = () => {
+const ProcessSection: React.FC = () => {
+  const rowsRef = useRef<HTMLDivElement[]>([]);
+
   useEffect(() => {
-    AOS.init({
-      once: false,
-      mirror: true,
-      easing: "ease-out-cubic",
-      duration: 800,
-      offset: 140,
+    rowsRef.current.forEach((row, i) => {
+      if (!row) return;
+      gsap.fromTo(
+        row,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: i * 0.15, // stagger effect
+          scrollTrigger: {
+            trigger: row,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse", // ✅ works both directions
+          },
+        }
+      );
     });
   }, []);
 
+  const processData: ProcessRowProps[] = [
+    {
+      number: "01",
+      title: "Research & Discovery",
+      desc: "Before designing, I gather context, identify challenges, and clarify what the product needs to solve.",
+      img: "/process/research.webp",
+    },
+    {
+      number: "02",
+      title: "Brainstorm & Ideation",
+      desc: "Exploring multiple directions, concepts, and approaches before narrowing down.",
+      img: "/process/brainstorm.webp",
+    },
+    {
+      number: "03",
+      title: "Sketch & Wireframe",
+      desc: "Low-fidelity sketches and wireframes to validate structure and flow.",
+      img: "/process/sketching.webp",
+    },
+    {
+      number: "04",
+      title: "Hi-fi Design",
+      desc: "Pixel-perfect visuals focused on clarity, usability, and aesthetics.",
+      img: "/process/wireframe.webp",
+    },
+    {
+      number: "05",
+      title: "Feedback & Iteration",
+      desc: "Refining designs based on feedback and usability insights.",
+      img: "/process/feedback.webp",
+    },
+  ];
+
   return (
-<section className="bg-[#FAFAFA]">
-
-
-
-    <div id="workflow" className="max-w-8xl mx-auto py-24 px-10">
-      <div className="space-y-10">
-        {/* Section Title */}
-        <div
-          className="border-b border-[#D9D9D9] h-10"
-          data-aos="fade-up"
-          data-aos-duration="600"
-        >
-          <h4 className="font-primary text-black text-lg lg:text-2xl">
+    <section className="bg-[#FAFAFA]">
+      <div id="workflow" className="max-w-8xl mx-auto py-24 px-10">
+        <div className="space-y-10">
+          {/* Section Title */}
+          <h4 className="font-primary text-black text-lg lg:text-2xl border-b border-[#D9D9D9] pb-2">
             Project Flow
           </h4>
-        </div>
 
-        {/* Rows */}
-        <div className="flex flex-col space-y-12">
-          <ProcessRow
-            number="01"
-            title="Research & Discovery"
-            desc="Before designing, I gather context, identify challenges, and clarify what the product needs to solve."
-            img="/process/research.webp"
-            delay={0}
-          />
-          <ProcessRow
-            number="02"
-            title="Brainstorm & Ideation"
-            desc="Exploring multiple directions, concepts, and approaches before narrowing down."
-            img="/process/brainstorm.webp"
-            delay={120}
-          />
-          <ProcessRow
-            number="03"
-            title="Sketch & Wireframe"
-            desc="Low-fidelity sketches and wireframes to validate structure and flow."
-            img="/process/sketching.webp"
-            delay={240}
-          />
-          <ProcessRow
-            number="04"
-            title="Hi-fi Design"
-            desc="Pixel-perfect visuals focused on clarity, usability, and aesthetics."
-            img="/process/wireframe.webp"
-            delay={360}
-          />
-          <ProcessRow
-            number="05"
-            title="Feedback & Iteration"
-            desc="Refining designs based on feedback and usability insights."
-           img="/process/feedback.webp"
-            delay={480}
-          />
+          {/* Rows */}
+          <div className="flex flex-col space-y-12">
+            {processData.map((item, i) => (
+              <ProcessRow
+                key={i}
+                ref={(el) => {
+                  if (el) rowsRef.current[i] = el;
+                }}
+                number={item.number}
+                title={item.title}
+                desc={item.desc}
+                img={item.img}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-</section>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ import { PROJECTS_CAROUSEL_CONFIG } from "../utils/constant";
 export default function WorkSection() {
   return (
     <div className="w-full space-y-10  bg-[#161616] text-white py-24  ">
-      <div className="skills-container-top px-10">
+      <div className="skills-container-top max-w-8xl mx-auto px-10">
         <h4
           className="font-primary h-10 border-b border-[#D9D9D9]  font-light text-white text-[24px] leading-[100%] tracking-[0%] capitalize
 "

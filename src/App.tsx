@@ -10,20 +10,19 @@ import IntroSection from "./components/IntroSection";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import HeroShowcaseSection from "./components/section/HeroShowcaseSection";
-import AOS from "aos";
 
 import ProjectsCarousel from "./components/section/ProjectsCarousel";
 import { PROJECTS_CAROUSEL_CONFIG } from "./utils/constant";
 import SkillsSection from "./components/section/SkillSection";
 
 import { SplitText } from "gsap/SplitText";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import ProcessSection from "./components/ProcessSection";
 
 import { ArrowUpRight } from "lucide-react";
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 
-gsap.registerPlugin(SplitText);
 const App = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +30,8 @@ const App = () => {
 
   useGSAP(
     () => {
-      // Split heading into words
+      if (!titleRef.current) return;
+
       const split = new SplitText(titleRef.current, {
         type: "words",
       });
@@ -44,14 +44,11 @@ const App = () => {
       });
 
       tl
-        // Navbar
         .from(".navbar-wrapper", {
           y: -40,
           opacity: 0,
           duration: 0.6,
         })
-
-        // Heading words
         .from(
           split.words,
           {
@@ -61,8 +58,7 @@ const App = () => {
           },
           "-=0.2",
         )
-
-        // Social icons (cascade)
+        // ⛔ UNTOUCHED selector (exactly as you had it)
         .from(
           ".social-links ",
           {
@@ -72,8 +68,6 @@ const App = () => {
           },
           "-=0.3",
         )
-
-        // Button (elastic pop)
         .from(
           heroBtnRef.current,
           {
@@ -84,11 +78,9 @@ const App = () => {
           },
           "-=0.2",
         )
-
         .from(".first-img", {
           opacity: 0,
-
-          duration: 0.8, // animation duration
+          duration: 0.8,
           ease: "power2.out",
           stagger: 0.1,
         });
@@ -100,36 +92,16 @@ const App = () => {
     { scope: containerRef },
   );
 
-  useEffect(() => {
-    const initAOS = () => {
-      AOS.init({
-        once: false,
-        mirror: true,
-        duration: 900,
-        easing: "ease-out-cubic",
-        offset: 150, // 👈 important
-        anchorPlacement: "top-bottom",
-      });
-
-      AOS.refreshHard(); // 👈 VERY IMPORTANT
-    };
-
-    // wait for layout + GSAP
-    const timeout = setTimeout(initAOS, 500);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
     <>
-      {/* <div className="w-full h-16 mt-[-100vh] fixed bottom-0 left-0 bg-red-900 "></div> */}
-
-      <div className=" main-wrapper  bg-white relative z-[10] mx-auto">
+      <div className="main-wrapper bg-white relative z-[10] mx-auto">
         <div ref={containerRef}>
           <Navbar />
+          
 
-          <section>
-            <div className="hero-wrapper w-full max-w-8xl mx-auto pt-[100px] pb-10 h-auto px-10">
+
+ <section>
+            <div className="hero-wrapper w-full max-w-8xl mx-auto pt-[200px] pb-10 h-auto px-10">
               <div className="w-full">
                 <div className="hero-content mx-auto mb-8 flex flex-col items-center w-full max-w-[976px]">
                   <h1
@@ -209,7 +181,7 @@ const App = () => {
     hover:shadow-none
   "
 >
-  <span className="whitespace-nowrap font-secondary font-semibold text-[16px] leading-[100%] tracking-[0%]
+  <span className="whitespace-nowrap font-secondary font-medium text-[16px] leading-[100%] tracking-[0%]
 ">Let’s Connect</span>
  <div className="size-[40px]  bg-white rounded-full flex justify-center items-center">
    <ArrowUpRight size={20} />
@@ -248,60 +220,11 @@ const App = () => {
         <ConnectSection />
 
         <FooterSection />
-      </div>
+        </div>
+      
     </>
   );
 };
 
 export default App;
 
-export const skillsData = [
-  {
-    title: "UI/UX Design",
-    items: ["User-Centered Design", "Problem-Solving <br /> Usability-Focused"],
-  },
-  {
-    title: "Visual Design",
-    items: [
-      "Typography",
-      "Hierarchy",
-      "Color Theory",
-      "Whitespacing",
-      "Alignment <br /> Responsiveness",
-    ],
-  },
-  {
-    title: "UX Writing",
-    items: [
-      "Clear & Concise Copy",
-      "Form Helper Text",
-      "Action-Oriented CTAs <br /> Error & Empty States <br /> Content Clarity & Tone",
-    ],
-  },
-];
-
-export const designPrinciplesData = [
-  {
-    title: "Information Architecture",
-    items: [
-      "Content Hierarchy",
-      "Sitemap",
-      "Menu & Label Naming",
-      "Page Organization <br /> Grouping",
-    ],
-  },
-  {
-    title: "WCAG",
-    items: [
-      "Color Contrast Compliance",
-      "Readable Text",
-      "Readable Text | Inclusive Content Design",
-      "Accessible CTA & Forms",
-      "Clarity Over Decoration",
-    ],
-  },
-  {
-    title: "Tools",
-    items: ["Figma", "Canva", "ChatGPT", "Gemini", "Framer", "Spline"],
-  },
-];

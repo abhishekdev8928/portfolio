@@ -1,70 +1,116 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { HERO_SHOWCASE_PROJECTS_CONFIG } from "@/utils/constant.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroShowcaseSection = () => {
-  // AOS init (for all cards except first)
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-out-cubic",
-      once: false,
-    });
-  }, []);
-
-  // GSAP ONLY for first card
   useGSAP(() => {
+    /* ---------------- FIRST CARD (UNCHANGED LOGIC) ---------------- */
     const firstCard = document.querySelector(".project-layout.first-card");
-    if (!firstCard) return;
+    if (firstCard) {
+      const image = firstCard.querySelector(".move-down");
+      const content = firstCard.querySelector(".project-content");
 
-    const image = firstCard.querySelector(".move-down");
-    const content = firstCard.querySelector(".project-content");
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: firstCard,
+          start: "top 40%",
+          end: "top 30%",
+          scrub: 3,
+          invalidateOnRefresh: true,
+        },
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: firstCard,
-        start: "top 40%",
-        end: "top 30%",
-        scrub: 3,
-        invalidateOnRefresh: true,
-        // markers: true,
-      },
+      tl.fromTo(
+        image,
+        { y: -300, scale: 0.8 },
+        { y: 0, scale: 1, ease: "none" }
+      ).to(
+        content,
+        { opacity: 1, duration: 0.3, ease: "power2.out" },
+        "-=0.2"
+      );
+    }
+
+    /* ---------------- OTHER CARDS (UNCHANGED) ---------------- */
+    const cards = gsap.utils.toArray(
+      ".project-layout:not(.first-card)"
+    );
+
+    cards.forEach((card) => {
+      const content = card.querySelector(".project-content");
+      const image = card.querySelector(".move-down");
+
+      if (!content || !image) return;
+
+      gsap.from([content, image], {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      });
     });
 
-    // First image animation
-    tl.fromTo(
-      image,
-      {
-        y: -300,
-        scale: 0.8,
-      },
-      {
-        y: 0,
-        scale: 1,
-        ease: "none",
-      }
-    );
+    /* ---------------- MOUSE HOVER EFFECT (ONLY ADDITION) ---------------- */
+    const imageWrappers = gsap.utils.toArray(".move-down");
 
-    // First content animation
-    tl.to(
-      content,
-      {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      },
-      "-=0.2"
-    );
+    imageWrappers.forEach((wrapper) => {
+      const circle = wrapper.querySelector(".hover-circle");
+
+      if (!circle) return;
+
+      const xTo = gsap.quickTo(circle, "x", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
+
+      const yTo = gsap.quickTo(circle, "y", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
+
+      wrapper.addEventListener("mouseenter", () => {
+        gsap.to(circle, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.25,
+          ease: "power3.out",
+        });
+      });
+
+      wrapper.addEventListener("mousemove", (e) => {
+        const bounds = wrapper.getBoundingClientRect();
+        xTo(e.clientX - bounds.left);
+        yTo(e.clientY - bounds.top);
+      });
+
+      wrapper.addEventListener("mouseleave", () => {
+        gsap.to(circle, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.25,
+          ease: "power3.inOut",
+        });
+      });
+
+    
+    });
   }, []);
 
   return (
-    <section id="project" className="hero-showcase-wrapper mx-auto project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]">
+    <section
+      id="project"
+      className="hero-showcase-wrapper  mx-auto project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]"
+    >
       {HERO_SHOWCASE_PROJECTS_CONFIG.map((project, index) => (
         <div
           key={project.id}
@@ -77,9 +123,6 @@ const HeroShowcaseSection = () => {
             className={`project-content space-y-4 text-center mx-auto ${
               index === 0 ? "opacity-0" : ""
             }`}
-            {...(index !== 0 && {
-              "data-aos": "fade-up",
-            })}
           >
             <h2 className="font-primary font-medium text-black text-[40px] leading-[100%]">
               {project.title}
@@ -107,22 +150,30 @@ const HeroShowcaseSection = () => {
             </div>
           </div>
 
-          {/* IMAGE */}
+          {/* IMAGE (STYLE UNCHANGED) */}
           <div
             className={`mx-auto shadow-2xl rounded-2xl overflow-hidden move-down will-change-transform ${
               index === 0 ? "relative z-10 first-img" : "w-full"
             }`}
-            style={{ transformOrigin: "center top" }}
-            {...(index !== 0 && {
-              "data-aos": "fade-up",
-              "data-aos-delay": "150",
-            })}
+            style={{ transformOrigin: "center top", position: "relative", cursor: "none" }}
           >
             <img
               src={project.heroImageSrc}
               className="w-full block"
               alt={project.imageAlt}
             />
+
+            {/* HOVER CIRCLE (ABSOLUTE OVERLAY) */}
+           <a
+  href={project.prototypeUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover-circle font-primary font-medium text-[20px] leading-[100%] tracking-[0%]"
+  onClick={(e) => e.stopPropagation()} // 🔥 important
+>
+  View More
+</a>
+
           </div>
         </div>
       ))}
