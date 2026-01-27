@@ -71,13 +71,13 @@ const ConnectSection = () => {
           <a
   href="mailto:prathammhavale38@gmail.com"
   className="py-2 pr-2 bg-[#FF6E00] pl-6 cursor-pointer justify-center rounded-full flex gap-2 items-center
-             hover:translate-x-[3px] hover:translate-y-[4px] hover:shadow-none
+             hover:translate-x-[3px] hover:translate-y-1 hover:shadow-none
              transition-all duration-150 ease-out
-             border border-black shadow-[3px_4px_0px_0px_#2D2D2D] font-secondary font-medium text-[16px] leading-[100%] tracking-[0%] w-fit h-[56px]
+             border border-black shadow-[3px_4px_0px_0px_#2D2D2D] font-secondary font-medium text-[16px] leading-[100%] tracking-[0%] w-fit 
 "
 >
   prathammhavale38@gmail.com
-  <div className="size-[40px]  bg-white rounded-full flex justify-center items-center">
+  <div className="size-10  bg-white rounded-full flex justify-center items-center">
    <ArrowUpRight size={20} />
  </div>
 </a>

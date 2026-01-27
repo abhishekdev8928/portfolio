@@ -168,7 +168,7 @@ const App = () => {
                       >
 <button
   className="
-    w-[186px] h-[52px]
+w-fit h-[52px]
     flex items-center justify-center gap-[8px]
     bg-[#FF6E00]
     pt-[16px] pr-[8px] pb-[16px] pl-[24px]

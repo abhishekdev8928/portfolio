@@ -2,17 +2,27 @@ import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HERO_SHOWCASE_PROJECTS_CONFIG } from "@/utils/constant.ts";
+import { HERO_SHOWCASE_PROJECTS_CONFIG } from "@/utils/constant";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroShowcaseSection = () => {
+const HeroShowcaseSection: React.FC = () => {
   useGSAP(() => {
-    /* ---------------- FIRST CARD (UNCHANGED LOGIC) ---------------- */
-    const firstCard = document.querySelector(".project-layout.first-card");
+    /* ---------------- FIRST CARD ---------------- */
+    const firstCard = document.querySelector(
+      ".project-layout.first-card"
+    ) as HTMLElement | null;
+
     if (firstCard) {
-      const image = firstCard.querySelector(".move-down");
-      const content = firstCard.querySelector(".project-content");
+      const image = firstCard.querySelector(
+        ".move-down"
+      ) as HTMLElement | null;
+
+      const content = firstCard.querySelector(
+        ".project-content"
+      ) as HTMLElement | null;
+
+      if (!image || !content) return;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -35,14 +45,19 @@ const HeroShowcaseSection = () => {
       );
     }
 
-    /* ---------------- OTHER CARDS (UNCHANGED) ---------------- */
+    /* ---------------- OTHER CARDS ---------------- */
     const cards = gsap.utils.toArray(
       ".project-layout:not(.first-card)"
-    );
+    ) as HTMLElement[];
 
     cards.forEach((card) => {
-      const content = card.querySelector(".project-content");
-      const image = card.querySelector(".move-down");
+      const content = card.querySelector(
+        ".project-content"
+      ) as HTMLElement | null;
+
+      const image = card.querySelector(
+        ".move-down"
+      ) as HTMLElement | null;
 
       if (!content || !image) return;
 
@@ -60,11 +75,15 @@ const HeroShowcaseSection = () => {
       });
     });
 
-    /* ---------------- MOUSE HOVER EFFECT (ONLY ADDITION) ---------------- */
-    const imageWrappers = gsap.utils.toArray(".move-down");
+    /* ---------------- MOUSE HOVER EFFECT ---------------- */
+    const imageWrappers = gsap.utils.toArray(
+      ".move-down"
+    ) as HTMLElement[];
 
     imageWrappers.forEach((wrapper) => {
-      const circle = wrapper.querySelector(".hover-circle");
+      const circle = wrapper.querySelector(
+        ".hover-circle"
+      ) as HTMLElement | null;
 
       if (!circle) return;
 
@@ -87,7 +106,7 @@ const HeroShowcaseSection = () => {
         });
       });
 
-      wrapper.addEventListener("mousemove", (e) => {
+      wrapper.addEventListener("mousemove", (e: MouseEvent) => {
         const bounds = wrapper.getBoundingClientRect();
         xTo(e.clientX - bounds.left);
         yTo(e.clientY - bounds.top);
@@ -101,15 +120,13 @@ const HeroShowcaseSection = () => {
           ease: "power3.inOut",
         });
       });
-
-    
     });
   }, []);
 
   return (
     <section
       id="project"
-      className="hero-showcase-wrapper  mx-auto project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]"
+      className="hero-showcase-wrapper mx-auto project-section max-w-8xl px-20 py-24 w-full flex flex-col gap-[96px]"
     >
       {HERO_SHOWCASE_PROJECTS_CONFIG.map((project, index) => (
         <div
@@ -150,12 +167,16 @@ const HeroShowcaseSection = () => {
             </div>
           </div>
 
-          {/* IMAGE (STYLE UNCHANGED) */}
+          {/* IMAGE */}
           <div
             className={`mx-auto shadow-2xl rounded-2xl overflow-hidden move-down will-change-transform ${
               index === 0 ? "relative z-10 first-img" : "w-full"
             }`}
-            style={{ transformOrigin: "center top", position: "relative", cursor: "none" }}
+            style={{
+              transformOrigin: "center top",
+              position: "relative",
+              cursor: "none",
+            }}
           >
             <img
               src={project.heroImageSrc}
@@ -163,17 +184,16 @@ const HeroShowcaseSection = () => {
               alt={project.imageAlt}
             />
 
-            {/* HOVER CIRCLE (ABSOLUTE OVERLAY) */}
-           <a
-  href={project.prototypeUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover-circle font-primary font-medium text-[20px] leading-[100%] tracking-[0%]"
-  onClick={(e) => e.stopPropagation()} // 🔥 important
->
-  View More
-</a>
-
+            {/* HOVER CIRCLE */}
+            <a
+              href={project.prototypeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover-circle font-primary font-medium text-[20px] leading-[100%] tracking-[0%]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Visit Site
+            </a>
           </div>
         </div>
       ))}

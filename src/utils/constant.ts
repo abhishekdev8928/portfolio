@@ -276,26 +276,26 @@ export const HERO_SHOWCASE_PROJECTS_CONFIG = [
       "https://www.figma.com/proto/Ckd3Iij63zRBIC3AQxO54s/Trekking_LandingPage_PrathamMhavale?node-id=2110-145&scaling=min-zoom&content-scaling=fixed&page-id=12%3A3&starting-point-node-id=2110%3A145",
   },
 
-  {
-    id: "5",
-    title: "Design Studio Website",
-    subtitle:
-      "A clean and expressive website for a creative design studio.",
-    description:
-      "Focused on showcasing work, building credibility, and maintaining strong visual consistency throughout.",
+  // {
+  //   id: "5",
+  //   title: "Design Studio Website",
+  //   subtitle:
+  //     "A clean and expressive website for a creative design studio.",
+  //   description:
+  //     "Focused on showcasing work, building credibility, and maintaining strong visual consistency throughout.",
 
-    tags: [
-      { id: "portfolio", label: "Portfolio Design" },
-      { id: "creative", label: "Creative UI" },
-      { id: "layout", label: "Layout Design" },
-      { id: "consistency", label: "Visual Consistency" },
-    ],
+  //   tags: [
+  //     { id: "portfolio", label: "Portfolio Design" },
+  //     { id: "creative", label: "Creative UI" },
+  //     { id: "layout", label: "Layout Design" },
+  //     { id: "consistency", label: "Visual Consistency" },
+  //   ],
 
-    heroImageSrc: "/project/Monochrome_wedesign.webp",
-    imageAlt: "Design studio website",
+  //   heroImageSrc: "/project/Monochrome_wedesign.webp",
+  //   imageAlt: "Design studio website",
 
-    prototypeUrl:
-      "https://www.figma.com/proto/iqcCxyNGEGvEHyRlOdDhJn/Olio_Assignment?node-id=46-442&scaling=min-zoom&content-scaling=fixed&page-id=8%3A552&starting-point-node-id=46%3A442",
-  },
+  //   prototypeUrl:
+  //     "https://www.figma.com/proto/iqcCxyNGEGvEHyRlOdDhJn/Olio_Assignment?node-id=46-442&scaling=min-zoom&content-scaling=fixed&page-id=8%3A552&starting-point-node-id=46%3A442",
+  // },
 ];
 

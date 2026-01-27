@@ -1,8 +1,4 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const skillsData = [
   {
@@ -59,21 +55,42 @@ const designPrinciplesData = [
   },
 ];
 
+
+
+
+
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function SkillsSection() {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".skill-block", {
-        y: 40,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power2.out",
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-        },
+      const blocks = gsap.utils.toArray<HTMLElement>(".skill-block");
+
+      blocks.forEach((block) => {
+        gsap.fromTo(
+          block,
+          {
+            y: 40,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: block,
+              start: "top 85%",
+              end: "top 55%",
+              scrub: 1, // 🔥 THIS IS THE KEY
+            },
+          }
+        );
       });
     }, sectionRef);
 

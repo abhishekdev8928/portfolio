@@ -86,7 +86,7 @@ const Navbar = () => {
                 onClick={(e) => handleNavClick(e, item.url)}
                 className="
                   font-secondary
-                  text-lg
+                  text-[16px]
                   tracking-tight
                   text-black
                   hover:text-gray-700
@@ -107,14 +107,14 @@ const Navbar = () => {
                 border border-black
                 shadow-[3px_4px_0px_0px_#2D2D2D]
                 transition-all duration-150 ease-out
-                hover:translate-x-[3px] hover:translate-y-[4px]
-                min-w-[137px] h-[48px] pl-5 pr-2 hover:shadow-none
+                hover:translate-x-[3px] hover:translate-y-1
+              w-fit h-12 pl-5 pr-2 hover:shadow-none
               "
             >
               <span className="font-secondary text-[#2D2D2D] leading-none text-[16px] font-medium">
                 Connect
               </span>
-              <div className="size-[36px] bg-black shrink-0 rounded-full flex justify-center items-center">
+              <div className="size-9 bg-black shrink-0 rounded-full flex justify-center items-center">
                 <MailIcon size={20} color="white" />
               </div>
             </a>
